@@ -6,6 +6,10 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
 public class DBLoader {
     private static SessionFactory sessionFactory;
 
@@ -30,5 +34,9 @@ public class DBLoader {
         builder.applySettings(configuration.getProperties());
         ServiceRegistry serviceRegistry = builder.build();
         return configuration.buildSessionFactory(serviceRegistry);
+    }
+    public static Connection getConnection(String driverName, String connectionURL, String login, String pass) throws ClassNotFoundException, SQLException {
+        Class.forName(driverName);
+        return DriverManager.getConnection(connectionURL, login, pass);
     }
 }

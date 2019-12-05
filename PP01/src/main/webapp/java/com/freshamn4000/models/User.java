@@ -2,27 +2,38 @@ package com.freshamn4000.models;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
     @Id
-    @Column(name="id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name="first_name")
+    @Column(name = "first_name")
     private String firstName;
-    @Column(name="last_name")
+    @Column(name = "last_name")
     private String lastName;
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
-    @Column(name="birth_day")
+    @Column(name = "birth_day")
     private String birthDate;
-    @Column(name="phone_number")
+    @Column(name = "phone_number")
     private String phoneNumber;
 
-    public User() {}
+    public User() {
+    }
 
     public User(String firstName, String lastName, String email, String birthDate, String phoneNumber) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.birthDate = birthDate;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public User(Long id, String firstName, String lastName, String email, String birthDate, String phoneNumber) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
