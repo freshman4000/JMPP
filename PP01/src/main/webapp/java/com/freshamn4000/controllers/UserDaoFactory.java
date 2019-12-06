@@ -27,7 +27,7 @@ public class UserDaoFactory {
             Properties properties = new Properties();
             InputStream inputStream = UserDaoFactory.class.getClassLoader().getResourceAsStream("hibernate.properties");
             properties.load(inputStream);
-            switch (properties.getProperty("fetching.type")) {
+            switch (properties.getProperty("dao.type")) {
                 case "jdbc":
                     clientService = JDBCClientService.getInstance(
                             properties.getProperty("hibernate.connection.driver_class"),
