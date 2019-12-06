@@ -5,9 +5,11 @@ import com.freshamn4000.interfaces.ClientService;
 import com.freshamn4000.models.User;
 import com.freshamn4000.utility.DBLoader;
 import org.hibernate.SessionFactory;
-
 import java.util.List;
 
+/**
+ * This class represents methods, that call UserHibernateDAO methods, providing session instance object.
+ */
 public class HibernateClientService implements ClientService<User, Long> {
     private static HibernateClientService hibernateClientService;
     private SessionFactory sessionFactory;

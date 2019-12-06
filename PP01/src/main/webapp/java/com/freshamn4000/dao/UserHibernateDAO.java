@@ -7,7 +7,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
-
+/**
+ * This class is responsible for DB relationship, using Hibernate connection.
+ */
 public class UserHibernateDAO implements UserDAO<User, Long> {
     private Session session;
 

@@ -13,6 +13,11 @@ import java.io.*;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * This class represents controller, which loads and checks properties file for "fetching.type" attribute and
+ * supplies UserService, needed for DB connectivity. For example, if fetching.type is jdbc - this class will produce
+ * JDBCClientService, in case of "hibernate" - HibernateClientService.
+ */
 public class Controller {
 
     public static ClientService<User, Long> getClientService(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

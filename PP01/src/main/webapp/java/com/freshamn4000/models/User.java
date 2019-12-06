@@ -1,7 +1,6 @@
 package com.freshamn4000.models;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
 
 @Entity
 @Table(name = "users")

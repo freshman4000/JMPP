@@ -9,6 +9,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * This class represents methods, that call UserJDBCDAO methods, providing connection instance object.
+ */
 public class JDBCClientService implements ClientService<User, Long> {
     private static JDBCClientService jdbcClientService;
     private Connection connection;

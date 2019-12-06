@@ -7,6 +7,9 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is responsible for DB relationship, using JDBC connection.
+ */
 public class UserJDBCDao implements UserDAO<User, Long> {
     private Connection connection;
 
