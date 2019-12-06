@@ -22,7 +22,7 @@ public class JDBCClientService implements ClientService<User, Long> {
 
     public static JDBCClientService getInstance(String driverName, String connectionUrl, String login, String pass) throws SQLException, ClassNotFoundException {
         if (jdbcClientService == null) {
-            jdbcClientService = new JDBCClientService(DBHelper.getConnection(driverName, connectionUrl, login, pass));
+            jdbcClientService = new JDBCClientService(DBHelper.getInstance().getConnection(driverName, connectionUrl, login, pass));
         }
         return jdbcClientService;
     }

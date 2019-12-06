@@ -16,7 +16,7 @@ import java.util.List;
  */
 public class HibernateClientService implements ClientService<User, Long> {
     private static HibernateClientService hibernateClientService;
-    private static Configuration configuration = DBHelper.getConfiguration();
+    private static Configuration configuration = DBHelper.getInstance().getConfiguration();
     private static SessionFactory sessionFactory = getSessionFactory();
 
     public static HibernateClientService getInstance() {
