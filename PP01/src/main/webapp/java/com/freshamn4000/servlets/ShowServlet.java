@@ -1,6 +1,6 @@
 package com.freshamn4000.servlets;
 
-import com.freshamn4000.controllers.Controller;
+import com.freshamn4000.controllers.UserDaoFactory;
 import com.freshamn4000.interfaces.ClientService;
 import com.freshamn4000.models.User;
 import com.freshamn4000.utility.FormGenerator;
@@ -20,7 +20,7 @@ import java.util.List;
 public class ShowServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ClientService<User, Long> clientService = Controller.getClientService(req, resp);
+        ClientService<User, Long> clientService = UserDaoFactory.getClientService(req, resp);
         List<User> result = new ArrayList<>();
         try {
             result = clientService.showAllUsers();

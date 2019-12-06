@@ -3,8 +3,12 @@ package com.freshamn4000.services;
 import com.freshamn4000.dao.UserHibernateDAO;
 import com.freshamn4000.interfaces.ClientService;
 import com.freshamn4000.models.User;
-import com.freshamn4000.utility.DBLoader;
+import com.freshamn4000.utility.DBHelper;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.service.ServiceRegistry;
+
 import java.util.List;
 
 /**
@@ -12,32 +16,43 @@ import java.util.List;
  */
 public class HibernateClientService implements ClientService<User, Long> {
     private static HibernateClientService hibernateClientService;
-    private SessionFactory sessionFactory;
-
-    private HibernateClientService(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    private static Configuration configuration = DBHelper.getConfiguration();
+    private static SessionFactory sessionFactory = getSessionFactory();
 
     public static HibernateClientService getInstance() {
         if (hibernateClientService == null) {
-            hibernateClientService = new HibernateClientService(DBLoader.getSessionFactory());
+            hibernateClientService = new HibernateClientService();
         }
         return hibernateClientService;
     }
 
+    private static SessionFactory getSessionFactory() {
+        if (sessionFactory == null) {
+            StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder();
+            builder.applySettings(configuration.getProperties());
+            ServiceRegistry serviceRegistry = builder.build();
+            return configuration.buildSessionFactory(serviceRegistry);
+        }
+        return sessionFactory;
+    }
+
     public List<User> showAllUsers() {
-        return new UserHibernateDAO(HibernateClientService.getInstance().sessionFactory.openSession()).findAllUsers();
+        HibernateClientService.getInstance();
+        return new UserHibernateDAO(sessionFactory.openSession()).findAllUsers();
     }
 
     public void addUser(User user) {
-        new UserHibernateDAO(HibernateClientService.getInstance().sessionFactory.openSession()).addUser(user);
+        HibernateClientService.getInstance();
+        new UserHibernateDAO(sessionFactory.openSession()).addUser(user);
     }
 
     public void deleteUser(Long userId) {
-        new UserHibernateDAO(HibernateClientService.getInstance().sessionFactory.openSession()).deleteUser(userId);
+        HibernateClientService.getInstance();
+        new UserHibernateDAO(sessionFactory.openSession()).deleteUser(userId);
     }
 
     public void updateUser(Long userId, User user) {
-        new UserHibernateDAO(HibernateClientService.getInstance().sessionFactory.openSession()).updateUser(userId, user);
+        HibernateClientService.getInstance();
+        new UserHibernateDAO(sessionFactory.openSession()).updateUser(userId, user);
     }
 }

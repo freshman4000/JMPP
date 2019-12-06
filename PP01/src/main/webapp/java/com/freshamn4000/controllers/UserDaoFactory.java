@@ -18,14 +18,14 @@ import java.util.Properties;
  * supplies UserService, needed for DB connectivity. For example, if fetching.type is jdbc - this class will produce
  * JDBCClientService, in case of "hibernate" - HibernateClientService.
  */
-public class Controller {
+public class UserDaoFactory {
 
     public static ClientService<User, Long> getClientService(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ClientService<User, Long> clientService = null;
         RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
         try {
             Properties properties = new Properties();
-            InputStream inputStream = Controller.class.getClassLoader().getResourceAsStream("hibernate.properties");
+            InputStream inputStream = UserDaoFactory.class.getClassLoader().getResourceAsStream("hibernate.properties");
             properties.load(inputStream);
             switch (properties.getProperty("fetching.type")) {
                 case "jdbc":

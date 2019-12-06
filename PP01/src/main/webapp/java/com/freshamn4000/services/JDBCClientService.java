@@ -3,7 +3,7 @@ package com.freshamn4000.services;
 import com.freshamn4000.dao.UserJDBCDao;
 import com.freshamn4000.interfaces.ClientService;
 import com.freshamn4000.models.User;
-import com.freshamn4000.utility.DBLoader;
+import com.freshamn4000.utility.DBHelper;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -22,7 +22,7 @@ public class JDBCClientService implements ClientService<User, Long> {
 
     public static JDBCClientService getInstance(String driverName, String connectionUrl, String login, String pass) throws SQLException, ClassNotFoundException {
         if (jdbcClientService == null) {
-            jdbcClientService = new JDBCClientService(DBLoader.getConnection(driverName, connectionUrl, login, pass));
+            jdbcClientService = new JDBCClientService(DBHelper.getConnection(driverName, connectionUrl, login, pass));
         }
         return jdbcClientService;
     }

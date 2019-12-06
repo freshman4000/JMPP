@@ -1,6 +1,6 @@
 package com.freshamn4000.servlets;
 
-import com.freshamn4000.controllers.Controller;
+import com.freshamn4000.controllers.UserDaoFactory;
 import com.freshamn4000.interfaces.ClientService;
 import com.freshamn4000.models.User;
 
@@ -23,7 +23,7 @@ public class StartServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ClientService<User, Long> clientService = Controller.getClientService(req, resp);
+        ClientService<User, Long> clientService = UserDaoFactory.getClientService(req, resp);
         String firstName = req.getParameter("username");
         String lastName = req.getParameter("lastname");
         String email = req.getParameter("email");
