@@ -12,17 +12,22 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/admin/deleteUser")
-public class DeleteServlet extends HttpServlet {
+@WebServlet("/admin/setUserPass")
+public class SetPassServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ClientService<User, Long> clientService = UserDaoFactory.getClientService(req, resp);
         try {
-            clientService.deleteUser(Long.parseLong(req.getParameter("id")));
+                clientService.updatePassword(Long.parseLong(req.getParameter("id")), req.getParameter("password"));
+            resp.sendRedirect("/admin_panel.jsp");
         } catch (SQLException e) {
             req.setAttribute("message", "DB access problem! Try one more time!");
-            req.getRequestDispatcher("admin_panel.jsp").forward(req, resp);
+            req.getRequestDispatcher("/admin_panel.jsp").forward(req, resp);
         }
-        resp.sendRedirect("/admin/show");
+    }
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/setPass.jsp").forward(req, resp);
     }
 }

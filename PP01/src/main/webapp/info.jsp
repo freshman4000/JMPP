@@ -34,12 +34,6 @@
             margin: 0;
             padding: 0;
         }
-        .fields {
-            background: #f4f4f4;
-            width: 200px;
-            margin-top: 20px;
-            margin-left: 30px;
-        }
         .fields form {
             margin: 15px 15px;
         }
@@ -50,45 +44,19 @@
             border: none;
             border-radius: 5px;
         }
-        #button, #button1 {
-            background: #4c6ca0;;
-            color: #fff;
-            width: 100%;
-            height: 25px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        #button:hover, #button1:hover {
-            background: #446190;
-        }
     </style>
 </head>
 <body>
 <ul class="navbar">
     <li><a href="/user/registration">Register</a></li>
+    <li><a href="/user/login">Login</a></li>
 </ul>
-<section class="fields">
-    <form action="/user/login" method="POST">
-        Email: <br><input type="email" name="email"> <br>
-        Password: <br><input type="password" name="password"> <br>
-        <input id="button" type="submit" value="Login">
-    </form>
-    <form action="index.jsp" method="GET">
-        <input id="button1" type="submit" value="Go back">
-    </form>
-</section>
 <section class="container">
     <%
         if (request.getAttribute("message") != null) {
             out.println(request.getAttribute("message"));
         }
-         if (session.getAttribute("role") != null) {
-        response.sendRedirect("start_page.jsp");
-    }
     %>
-
 </section>
-
 </body>
 </html>

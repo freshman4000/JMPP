@@ -11,9 +11,19 @@ import java.util.List;
 public interface UserDAO<T, E> {
     List<T> findAllUsers() throws SQLException;
 
-    void addUser(T user) throws SQLException;
+    Long addUser(T user) throws SQLException;
 
     void deleteUser(E userId) throws SQLException;
 
     void updateUser(E userId, T user) throws SQLException;
+
+    void setPassword(E field, String password, T entity) throws SQLException;
+
+    void updatePassword(Long field, String password) throws SQLException;
+
+    boolean validateRegistration(String email) throws SQLException;
+
+    boolean validateLogin(String email, String password) throws SQLException;
+
+    boolean validateRole(String email, String password) throws SQLException;
 }

@@ -19,25 +19,29 @@ public class User {
     private String birthDate;
     @Column(name = "phone_number")
     private String phoneNumber;
+    @Column(name="role")
+    private String role;
 
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, String birthDate, String phoneNumber) {
+    public User(String firstName, String lastName, String email, String birthDate, String phoneNumber, String role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.birthDate = birthDate;
         this.phoneNumber = phoneNumber;
+        this.role = role;
     }
 
-    public User(Long id, String firstName, String lastName, String email, String birthDate, String phoneNumber) {
+    public User(Long id, String firstName, String lastName, String email, String birthDate, String phoneNumber, String role) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.birthDate = birthDate;
         this.phoneNumber = phoneNumber;
+        this.role = role;
     }
 
     public void setId(long id) {
@@ -88,9 +92,13 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getRole() {
+        return role;
+    }
+
     @Override
     public String toString() {
         return String.format("User: " +
-                "id<span id=\"ufi\">%s</span> name<span id=\"ufi\">%s</span> last name<span id=\"ufi\">%s</span> email<span id=\"ufi\">%s</span> birth date<span id=\"ufi\">%s</span> phoneNumber<span id=\"ufi\">%s</span>", id, firstName, lastName, email, birthDate, phoneNumber);
+                "id<span id=\"ufi\">%s</span> name<span id=\"ufi\">%s</span> last name<span id=\"ufi\">%s</span> email<span id=\"ufi\">%s</span> birth date<span id=\"ufi\">%s</span> phoneNumber<span id=\"ufi\">%s</span> role<span id=\"ufi\">%s</span>", id, firstName, lastName, email, birthDate, phoneNumber, role);
     }
 }

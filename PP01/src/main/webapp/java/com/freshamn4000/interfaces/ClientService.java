@@ -9,11 +9,21 @@ import java.util.List;
  * @param <E> entity-id Type-parameter.
  */
 public interface ClientService<T, E> {
-    public List<T> showAllUsers() throws SQLException;
+    List<T> showAllUsers() throws SQLException;
 
-    public void addUser(T entity) throws SQLException;
+    Long addUser(T entity) throws SQLException;
 
-    public void deleteUser(E field) throws SQLException;
+    void deleteUser(E field) throws SQLException;
 
-    public void updateUser(E field, T entity) throws SQLException;
+    void updateUser(E field, T entity) throws SQLException;
+
+    void setPassword(E field, String password, T entity) throws SQLException;
+
+    void updatePassword(Long field, String password) throws SQLException;
+
+    boolean validateRegistration(String email) throws SQLException;
+
+    boolean validateLogin(String email, String password) throws SQLException;
+
+    boolean validateRole(String email, String password) throws SQLException;
 }

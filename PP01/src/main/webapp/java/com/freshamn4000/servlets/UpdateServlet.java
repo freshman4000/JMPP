@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/update")
+@WebServlet("/admin/update")
 public class UpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rd = req.getRequestDispatcher("update_user.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/update_user.jsp");
         rd.forward(req, resp);
     }
 
@@ -29,14 +29,14 @@ public class UpdateServlet extends HttpServlet {
         String email = req.getParameter("email");
         String birthDate = req.getParameter("birthdate");
         String phone = req.getParameter("phone");
-        User user = new User(firstName, lastName, email, birthDate, phone);
+        String role = req.getParameter("role");
+        User user = new User(firstName, lastName, email, birthDate, phone, role);
         try {
             clientService.updateUser(Long.parseLong(req.getParameter("id")), user);
         } catch (SQLException e) {
             req.setAttribute("message", "DB access problem! Try one more time!");
-            req.getRequestDispatcher("index.jsp").forward(req, resp);
+            req.getRequestDispatcher("/admin_panel.jsp").forward(req, resp);
         }
-        resp.sendRedirect("/show");
-
+        resp.sendRedirect("/admin/show");
     }
 }

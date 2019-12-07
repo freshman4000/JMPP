@@ -33,8 +33,8 @@ public class JDBCClientService implements ClientService<User, Long> {
     }
 
     @Override
-    public void addUser(User entity) throws SQLException {
-        new UserJDBCDao(connection).addUser(entity);
+    public Long addUser(User entity) throws SQLException {
+      return new UserJDBCDao(connection).addUser(entity);
     }
 
     @Override
@@ -45,5 +45,30 @@ public class JDBCClientService implements ClientService<User, Long> {
     @Override
     public void updateUser(Long field, User entity) throws SQLException {
         new UserJDBCDao(connection).updateUser(field, entity);
+    }
+
+    @Override
+    public void setPassword(Long field, String password, User user) throws SQLException {
+        new UserJDBCDao(connection).setPassword(field, password, user);
+    }
+
+    @Override
+    public void updatePassword(Long field, String password) throws SQLException {
+        new UserJDBCDao(connection).updatePassword(field, password);
+    }
+
+    @Override
+    public boolean validateRegistration(String email) throws SQLException {
+        return new UserJDBCDao(connection).validateRegistration(email);
+    }
+
+    @Override
+    public boolean validateLogin(String email, String password) throws SQLException {
+        return new UserJDBCDao(connection).validateLogin(email, password);
+    }
+
+    @Override
+    public boolean validateRole(String email, String password) throws SQLException {
+        return new UserJDBCDao(connection).validateRole(email, password);
     }
 }

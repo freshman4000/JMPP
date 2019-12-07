@@ -9,6 +9,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -41,9 +42,9 @@ public class HibernateClientService implements ClientService<User, Long> {
         return new UserHibernateDAO(sessionFactory.openSession()).findAllUsers();
     }
 
-    public void addUser(User user) {
+    public Long addUser(User user) {
         HibernateClientService.getInstance();
-        new UserHibernateDAO(sessionFactory.openSession()).addUser(user);
+      return new UserHibernateDAO(sessionFactory.openSession()).addUser(user);
     }
 
     public void deleteUser(Long userId) {
@@ -54,5 +55,30 @@ public class HibernateClientService implements ClientService<User, Long> {
     public void updateUser(Long userId, User user) {
         HibernateClientService.getInstance();
         new UserHibernateDAO(sessionFactory.openSession()).updateUser(userId, user);
+    }
+
+    @Override
+    public void setPassword(Long field, String password, User user) throws SQLException {
+    new UserHibernateDAO(sessionFactory.openSession()).setPassword(field, password, user);
+    }
+
+    @Override
+    public void updatePassword(Long field, String password) throws SQLException {
+    new UserHibernateDAO(sessionFactory.openSession()).updatePassword(field, password);
+    }
+
+    @Override
+    public boolean validateRegistration(String email) throws SQLException {
+        return new UserHibernateDAO(sessionFactory.openSession()).validateRegistration(email);
+    }
+
+    @Override
+    public boolean validateLogin(String email, String password) throws SQLException {
+        return new UserHibernateDAO(sessionFactory.openSession()).validateLogin(email, password);
+    }
+
+    @Override
+    public boolean validateRole(String email, String password) throws SQLException {
+        return new UserHibernateDAO(sessionFactory.openSession()).validateRole(email, password);
     }
 }

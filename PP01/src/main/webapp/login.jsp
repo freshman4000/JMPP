@@ -3,33 +3,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Index page</title>
+    <title>User addition</title>
     <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        /* Navbar Styling */
-        .navbar {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            background: #4c6ca0;
-            border-radius: 5px;
-            overflow: auto;
-        }
-        .navbar li {
-            float: left;
-        }
-        .navbar li a {
-            display: block;
-            color: #fff;
-            text-decoration: none;
-            padding: 15px 20px;
-        }
-        .navbar li a:hover {
-            background: #446190;
-            color: #f4f4f4;
-        }
         * {
             margin: 0;
             padding: 0;
@@ -65,9 +40,10 @@
     </style>
 </head>
 <body>
-<ul class="navbar">
-    <li><a href="/user/registration">Register</a></li>
-</ul>
+<% if (session.getAttribute("role") != null) {
+    response.sendRedirect("start_page.jsp");
+}%>
+
 <section class="fields">
     <form action="/user/login" method="POST">
         Email: <br><input type="email" name="email"> <br>
@@ -78,17 +54,5 @@
         <input id="button1" type="submit" value="Go back">
     </form>
 </section>
-<section class="container">
-    <%
-        if (request.getAttribute("message") != null) {
-            out.println(request.getAttribute("message"));
-        }
-         if (session.getAttribute("role") != null) {
-        response.sendRedirect("start_page.jsp");
-    }
-    %>
-
-</section>
-
 </body>
 </html>

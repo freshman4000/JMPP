@@ -1,5 +1,6 @@
 package com.freshamn4000.utility;
 
+import com.freshamn4000.models.Registration;
 import com.freshamn4000.models.User;
 import org.hibernate.cfg.Configuration;
 import java.sql.Connection;
@@ -24,7 +25,8 @@ public class DBHelper {
     public Configuration getConfiguration() {
         Configuration configuration = new Configuration();
         configuration
-                .addAnnotatedClass(User.class);
+                .addAnnotatedClass(User.class)
+                .addAnnotatedClass(Registration.class);
         return configuration;
     }
 }

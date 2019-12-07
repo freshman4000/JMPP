@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/add_user")
+@WebServlet("/admin/add_user")
 public class StartServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rd = req.getRequestDispatcher("add_user.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/add_user.jsp");
         rd.forward(req, resp);
     }
 
@@ -29,22 +29,25 @@ public class StartServlet extends HttpServlet {
         String email = req.getParameter("email");
         String birthDate = req.getParameter("birthdate");
         String phone = req.getParameter("phone");
+        String role = req.getParameter("role");
         if (!firstName.isEmpty()
                 && !lastName.isEmpty()
                 && !email.isEmpty()
                 && !birthDate.isEmpty()
-                && !phone.isEmpty()) {
-            User user = new User(firstName, lastName, email, birthDate, phone);
+                && !phone.isEmpty()
+                && !role.isEmpty()) {
+            User user = new User(firstName, lastName, email, birthDate, phone, role);
             try {
-                clientService.addUser(user);
+                Long id = clientService.addUser(user);
+                clientService.setPassword(id, "root", user);
             } catch (SQLException e) {
                 req.setAttribute("message", "DB access problem! TRy one more time!");
-                req.getRequestDispatcher("index.jsp").forward(req, resp);
+                req.getRequestDispatcher("/admin_panel.jsp").forward(req, resp);
             }
-            resp.sendRedirect("/show");
+            resp.sendRedirect("/admin/show");
         } else {
             req.setAttribute("message", "All fields should be filled. Please repeat entry!");
-            RequestDispatcher rd = req.getRequestDispatcher("index.jsp");
+            RequestDispatcher rd = req.getRequestDispatcher("/admin_panel.jsp");
             rd.forward(req, resp);
         }
     }

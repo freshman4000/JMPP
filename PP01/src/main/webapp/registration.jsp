@@ -3,33 +3,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Index page</title>
+    <title>User addition</title>
     <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        /* Navbar Styling */
-        .navbar {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            background: #4c6ca0;
-            border-radius: 5px;
-            overflow: auto;
-        }
-        .navbar li {
-            float: left;
-        }
-        .navbar li a {
-            display: block;
-            color: #fff;
-            text-decoration: none;
-            padding: 15px 20px;
-        }
-        .navbar li a:hover {
-            background: #446190;
-            color: #f4f4f4;
-        }
         * {
             margin: 0;
             padding: 0;
@@ -62,32 +37,41 @@
         #button:hover, #button1:hover {
             background: #446190;
         }
+        #role {
+            background: #4c6ca0;;
+            color: #fff;
+        }
+        .label {
+            color: red;
+        }
     </style>
 </head>
 <body>
-<ul class="navbar">
-    <li><a href="/user/registration">Register</a></li>
-</ul>
 <section class="fields">
-    <form action="/user/login" method="POST">
-        Email: <br><input type="email" name="email"> <br>
-        Password: <br><input type="password" name="password"> <br>
-        <input id="button" type="submit" value="Login">
+    <form action="/user/registration" method="POST">
+        Firstname: <br><input type="text" name="username" required> <br>
+        Lastname: <br><input type="text" name="lastname" required> <br>
+        Email: <br><input type="email" name="email" required> <br>
+        Birthdate: <br><input type="date" name="birthdate" required> <br>
+        Phone number: <br><input type="text" name="phone" pattern="\+[0-9][0-9]{10}"
+                                 required placeholder="+9(999)999-99-99 format"> <br>
+        Password: <br><input type="password" name="password1" pattern="[A-Za-z0-9]{8}"
+                                 required placeholder="Text/numbers 8 characters"> <br>
+        Repeat password: <br><input type="password" name="password2" pattern="[A-Za-z0-9]{8}"
+                                 required placeholder="Text/numbers 8 characters"> <br>
+        <input id="button" type="submit" value="Register">
     </form>
     <form action="index.jsp" method="GET">
         <input id="button1" type="submit" value="Go back">
     </form>
 </section>
+
 <section class="container">
     <%
         if (request.getAttribute("message") != null) {
             out.println(request.getAttribute("message"));
         }
-         if (session.getAttribute("role") != null) {
-        response.sendRedirect("start_page.jsp");
-    }
     %>
-
 </section>
 
 </body>
