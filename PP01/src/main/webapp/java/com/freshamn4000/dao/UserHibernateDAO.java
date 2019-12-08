@@ -47,6 +47,8 @@ public class UserHibernateDAO implements UserDAO<User, Long> {
     @Override
     public void deleteUser(Long userId) {
         Transaction tx = session.beginTransaction();
+        Query query0 = session.createQuery("DELETE FROM Registration WHERE user.id = :id").setLong("id", userId);
+        query0.executeUpdate();
         Query query = session.createQuery("DELETE FROM User WHERE id = :id").setLong("id", userId);
         query.executeUpdate();
         tx.commit();

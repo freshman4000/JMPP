@@ -19,10 +19,10 @@ public class DeleteServlet extends HttpServlet {
         ClientService<User, Long> clientService = UserDaoFactory.getClientService(req, resp);
         try {
             clientService.deleteUser(Long.parseLong(req.getParameter("id")));
+            resp.sendRedirect("/admin/show");
         } catch (SQLException e) {
             req.setAttribute("message", "DB access problem! Try one more time!");
             req.getRequestDispatcher("admin_panel.jsp").forward(req, resp);
         }
-        resp.sendRedirect("/admin/show");
     }
 }
