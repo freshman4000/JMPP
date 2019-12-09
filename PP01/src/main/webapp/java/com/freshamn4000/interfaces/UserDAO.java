@@ -25,5 +25,5 @@ public interface UserDAO<T, E> {
 
     boolean validateLogin(String email, String password) throws SQLException;
 
-    boolean validateRole(String email, String password) throws SQLException;
+    boolean validateRole(String email) throws SQLException;
 }

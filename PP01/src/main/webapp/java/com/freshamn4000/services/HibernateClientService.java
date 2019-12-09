@@ -78,7 +78,7 @@ public class HibernateClientService implements ClientService<User, Long> {
     }
 
     @Override
-    public boolean validateRole(String email, String password) throws SQLException {
-        return new UserHibernateDAO(sessionFactory.openSession()).validateRole(email, password);
+    public boolean validateRole(String email) throws SQLException {
+        return new UserHibernateDAO(sessionFactory.openSession()).validateRole(email);
     }
 }

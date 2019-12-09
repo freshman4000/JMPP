@@ -68,7 +68,7 @@ public class JDBCClientService implements ClientService<User, Long> {
     }
 
     @Override
-    public boolean validateRole(String email, String password) throws SQLException {
-        return new UserJDBCDao(connection).validateRole(email, password);
+    public boolean validateRole(String email) throws SQLException {
+        return new UserJDBCDao(connection).validateRole(email);
     }
 }

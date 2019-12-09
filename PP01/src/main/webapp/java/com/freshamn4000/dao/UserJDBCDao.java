@@ -154,7 +154,7 @@ public class UserJDBCDao implements UserDAO<User, Long> {
     }
 
     @Override
-    public boolean validateRole(String email, String password) throws SQLException {
+    public boolean validateRole(String email) throws SQLException {
         boolean result = false;
         try (PreparedStatement preparedStatement = connection.prepareStatement("SELECT role FROM users WHERE email = ?")) {
             preparedStatement.setString(1, email);

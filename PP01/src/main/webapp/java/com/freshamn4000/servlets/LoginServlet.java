@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
             if (!clientService.validateRegistration(req.getParameter("email"))) {
                 if (clientService.validateLogin(req.getParameter("email"), req.getParameter("password"))) {
                     HttpSession session = req.getSession();
-                    session.setAttribute("role", clientService.validateRole(req.getParameter("email"), req.getParameter("password")) ? "admin" : "user");
+                    session.setAttribute("role", clientService.validateRole(req.getParameter("email")) ? "admin" : "user");
                     if (session.getAttribute("role").equals("user")) {
                         resp.sendRedirect("/start_page.jsp");
                     } else if (session.getAttribute("role").equals("admin")) {

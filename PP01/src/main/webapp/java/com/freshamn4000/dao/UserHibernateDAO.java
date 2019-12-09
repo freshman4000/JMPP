@@ -108,10 +108,9 @@ public class UserHibernateDAO implements UserDAO<User, Long> {
     }
 
     @Override
-    public boolean validateRole(String email, String password) throws SQLException {
-        Query query = session.createQuery("SELECT role FROM User WHERE email = :emailParam AND id = (SELECT user.id FROM Registration WHERE password = :passwordParam)");
+    public boolean validateRole(String email) throws SQLException {
+        Query query = session.createQuery("SELECT role FROM User WHERE email = :emailParam)");
         query.setString("emailParam", email);
-        query.setString("passwordParam", password);
         boolean result = query.uniqueResult().equals("admin");
         session.close();
         return result;
