@@ -1,6 +1,6 @@
 package com.freshamn4000.servlets;
 
-import com.freshamn4000.controllers.UserDaoFactory;
+import com.freshamn4000.dao.UserDaoFactory;
 import com.freshamn4000.interfaces.ClientService;
 import com.freshamn4000.models.User;
 
@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/user/registration")
+@WebServlet("/registration")
 public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ClientService<User, Long> clientService = UserDaoFactory.getClientService(req, resp);
+        ClientService<User, Long> clientService = new UserDaoFactory().getDAO();
         try {
             //validate reg via method - it returns if email is unique in db
         if (clientService.validateRegistration(req.getParameter("email"))) {
@@ -48,7 +48,7 @@ public class RegistrationServlet extends HttpServlet {
                         //adding pass
                         clientService.setPassword(id, password, user);
                         //dispatching to login page
-                        req.getRequestDispatcher("/login.jsp").forward(req, resp);
+                        req.getRequestDispatcher("/index.jsp").forward(req, resp);
                     //if server side db problem
                     } catch (SQLException e) {
                         req.setAttribute("message", "DB access problem! Try one more time!");

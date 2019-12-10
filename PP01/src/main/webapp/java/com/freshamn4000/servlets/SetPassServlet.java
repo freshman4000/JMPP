@@ -1,6 +1,6 @@
 package com.freshamn4000.servlets;
 
-import com.freshamn4000.controllers.UserDaoFactory;
+import com.freshamn4000.dao.UserDaoFactory;
 import com.freshamn4000.interfaces.ClientService;
 import com.freshamn4000.models.User;
 
@@ -16,18 +16,18 @@ import java.sql.SQLException;
 public class SetPassServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ClientService<User, Long> clientService = UserDaoFactory.getClientService(req, resp);
+        ClientService<User, Long> clientService = new UserDaoFactory().getDAO();
         try {
                 clientService.updatePassword(Long.parseLong(req.getParameter("id")), req.getParameter("password"));
-            resp.sendRedirect("/admin_panel.jsp");
+            resp.sendRedirect("/admin/admin_panel.jsp");
         } catch (SQLException e) {
             req.setAttribute("message", "DB access problem! Try one more time!");
-            req.getRequestDispatcher("/admin_panel.jsp").forward(req, resp);
+            req.getRequestDispatcher("/admin/admin_panel.jsp").forward(req, resp);
         }
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/setPass.jsp").forward(req, resp);
+        req.getRequestDispatcher("/admin/setPass.jsp").forward(req, resp);
     }
 }

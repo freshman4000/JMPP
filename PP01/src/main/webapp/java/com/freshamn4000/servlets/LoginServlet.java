@@ -1,6 +1,6 @@
 package com.freshamn4000.servlets;
 
-import com.freshamn4000.controllers.UserDaoFactory;
+import com.freshamn4000.dao.UserDaoFactory;
 import com.freshamn4000.interfaces.ClientService;
 import com.freshamn4000.models.User;
 
@@ -13,16 +13,12 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet("/user/login")
+@WebServlet("/login")
 public class LoginServlet extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.sendRedirect("/login.jsp");
-    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ClientService<User, Long> clientService = UserDaoFactory.getClientService(req, resp);
+        ClientService<User, Long> clientService = new UserDaoFactory().getDAO();
         try {
             //if there is user with such email in db
             if (!clientService.validateRegistration(req.getParameter("email"))) {
@@ -32,9 +28,9 @@ public class LoginServlet extends HttpServlet {
                     //getting role of user with such email from DB: true - admin, false - user and setting it to session
                     session.setAttribute("role", clientService.validateRole(req.getParameter("email")) ? "admin" : "user");
                     if (session.getAttribute("role").equals("user")) {
-                        resp.sendRedirect("/start_page.jsp");
+                        resp.sendRedirect("/user/start_page.jsp");
                     } else if (session.getAttribute("role").equals("admin")) {
-                        resp.sendRedirect("/admin_panel.jsp");
+                        resp.sendRedirect("/admin/admin_panel.jsp");
                     }
                 } else {
                     //if pass doesn't match

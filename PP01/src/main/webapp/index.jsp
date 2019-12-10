@@ -66,15 +66,15 @@
 </head>
 <body>
 <ul class="navbar">
-    <li><a href="/user/registration">Register</a></li>
+    <li><a href="/registration">Register</a></li>
 </ul>
 <section class="fields">
-    <form action="/user/login" method="POST">
+    <form action="/login" method="POST">
         Email: <br><input type="email" name="email"> <br>
         Password: <br><input type="password" name="password"> <br>
         <input id="button" type="submit" value="Login">
     </form>
-    <form action="index.jsp" method="GET">
+    <form action="/index.jsp" method="GET">
         <input id="button1" type="submit" value="Go back">
     </form>
 </section>
@@ -84,7 +84,7 @@
             out.println(request.getAttribute("message"));
         }
          if (session.getAttribute("role") != null) {
-        response.sendRedirect("start_page.jsp");
+        response.sendRedirect("/user/start_page.jsp");
     }
     %>
 

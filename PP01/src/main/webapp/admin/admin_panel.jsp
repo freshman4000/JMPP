@@ -48,12 +48,8 @@
     </style>
 </head>
 <body>
-<% if (session.getAttribute("role") == null || !session.getAttribute("role").equals("admin")) {
-    request.setAttribute("message", "You are not logged in! Login first!");
-    request.getRequestDispatcher("/info.jsp").forward(request, response);
-}%>
 <ul class="navbar">
-    <li><a href="/add_user.jsp">Add user</a></li>
+    <li><a href="/admin/add_user.jsp">Add user</a></li>
     <li><a href="/admin/show">Show all users</a></li>
     <li><a href="/user/logout">Logout</a></li>
 </ul>

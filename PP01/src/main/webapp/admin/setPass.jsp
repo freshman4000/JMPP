@@ -47,25 +47,13 @@
     </style>
 </head>
 <body>
-<% if (session.getAttribute("role") == null || !session.getAttribute("role").equals("admin")) {
-    request.setAttribute("message", "You have no rights to view this page!");
-    request.getRequestDispatcher("/info.jsp").forward(request, response);
-}%>
 <section class="fields">
-    <form action="/admin/add_user" method="POST">
-        Firstname: <br><input type="text" name="username"> <br>
-        Lastname: <br><input type="text" name="lastname"> <br>
-        Email: <br><input type="email" name="email"> <br>
-        Birthdate: <br><input type="date" name="birthdate"> <br>
-        Phone number: <br><input type="text" name="phone" pattern="\+[0-9][0-9]{10}"
-                                 required placeholder="+9(999)999-99-99 format"> <br>
-        <label for="role" class="label">Role:</label> <br>  <select name="role" id="role">
-                <option value="user" selected>User</option>
-                <option value="admin">Admin</option>
-                    </select> <br>
-        <input id="button" type="submit" value="Add user">
+    <form action="/admin/setUserPass" method="POST">
+        Id: <br><input type="id" name="id" value="<%=request.getParameter("id")%>"> <br>
+        Password: <br><input type="password" name="password"> <br>
+        <input id="button" type="submit" value="Set password">
     </form>
-    <form action="/admin_panel.jsp" method="GET">
+    <form action="/admin/admin_panel.jsp" method="GET">
         <input id="button1" type="submit" value="Go back">
     </form>
 </section>

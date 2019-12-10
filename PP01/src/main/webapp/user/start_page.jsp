@@ -30,10 +30,6 @@
             color: #f4f4f4;
         }
     </style>
-    <% if (session.getAttribute("role") == null) {
-        request.setAttribute("message", "You have no rights to view this page!");
-        request.getRequestDispatcher("/info.jsp").forward(request, response);
-    }%>
 </head>
 <body>
 <ul class="navbar">

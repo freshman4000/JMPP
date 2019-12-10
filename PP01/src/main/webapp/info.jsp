@@ -48,8 +48,8 @@
 </head>
 <body>
 <ul class="navbar">
-    <li><a href="/user/registration">Register</a></li>
-    <li><a href="/user/login">Login</a></li>
+    <li><a href="/registration">Register</a></li>
+    <li><a href="/login">Login</a></li>
 </ul>
 <section class="container">
     <%

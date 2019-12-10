@@ -1,6 +1,6 @@
 package com.freshamn4000.servlets;
 
-import com.freshamn4000.controllers.UserDaoFactory;
+import com.freshamn4000.dao.UserDaoFactory;
 import com.freshamn4000.interfaces.ClientService;
 import com.freshamn4000.models.User;
 
@@ -17,13 +17,13 @@ import java.sql.SQLException;
 public class UpdateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher rd = req.getRequestDispatcher("/update_user.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/admin/update_user.jsp");
         rd.forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ClientService<User, Long> clientService = UserDaoFactory.getClientService(req, resp);
+        ClientService<User, Long> clientService = new UserDaoFactory().getDAO();
         String firstName = req.getParameter("username");
         String lastName = req.getParameter("lastname");
         String email = req.getParameter("email");
@@ -35,7 +35,7 @@ public class UpdateServlet extends HttpServlet {
             clientService.updateUser(Long.parseLong(req.getParameter("id")), user);
         } catch (SQLException e) {
             req.setAttribute("message", "DB access problem! Try one more time!");
-            req.getRequestDispatcher("/admin_panel.jsp").forward(req, resp);
+            req.getRequestDispatcher("/admin/admin_panel.jsp").forward(req, resp);
         }
         resp.sendRedirect("/admin/show");
     }

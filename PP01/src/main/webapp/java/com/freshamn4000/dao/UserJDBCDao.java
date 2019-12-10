@@ -25,7 +25,7 @@ public class UserJDBCDao implements UserDAO<User, Long> {
 
     private void createPassTable() throws SQLException {
         Statement stmt = connection.createStatement();
-        stmt.execute("create table if not exists registered (id bigint auto_increment, password varchar(256), user_id bigint, PRIMARY KEY (id), FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE CASCADE);");
+        stmt.execute("create table if not exists registered (id bigint auto_increment, password varchar(256), user_id bigint, PRIMARY KEY (id), FOREIGN KEY (user_id) REFERENCES users(id));");
         stmt.close();
     }
     @Override
@@ -77,8 +77,11 @@ public class UserJDBCDao implements UserDAO<User, Long> {
     @Override
     public void deleteUser(Long userId) throws SQLException {
         createTable();
-        try (PreparedStatement pst = connection.prepareStatement("DELETE FROM users WHERE id = ?")) {
+        try (PreparedStatement pst = connection.prepareStatement("DELETE FROM users WHERE id = ?");
+             PreparedStatement pst0 = connection.prepareStatement("DELETE FROM registered WHERE user_id = ?")) {
+            pst0.setLong(1, userId);
             pst.setLong(1, userId);
+            pst0.executeUpdate();
             pst.executeUpdate();
         }
     }

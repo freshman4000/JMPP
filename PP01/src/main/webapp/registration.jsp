@@ -48,7 +48,7 @@
 </head>
 <body>
 <section class="fields">
-    <form action="/user/registration" method="POST">
+    <form action="/registration" method="POST">
         Firstname: <br><input type="text" name="username" required> <br>
         Lastname: <br><input type="text" name="lastname" required> <br>
         Email: <br><input type="email" name="email" required> <br>
@@ -61,7 +61,7 @@
                                  required placeholder="Text/numbers 8 characters"> <br>
         <input id="button" type="submit" value="Register">
     </form>
-    <form action="index.jsp" method="GET">
+    <form action="/index.jsp" method="GET">
         <input id="button1" type="submit" value="Go back">
     </form>
 </section>

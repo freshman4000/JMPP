@@ -1,6 +1,6 @@
 package com.freshamn4000.servlets;
 
-import com.freshamn4000.controllers.UserDaoFactory;
+import com.freshamn4000.dao.UserDaoFactory;
 import com.freshamn4000.interfaces.ClientService;
 import com.freshamn4000.models.User;
 
@@ -16,13 +16,14 @@ import java.sql.SQLException;
 public class DeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ClientService<User, Long> clientService = UserDaoFactory.getClientService(req, resp);
+        ClientService<User, Long> clientService = new UserDaoFactory().getDAO();
         try {
             clientService.deleteUser(Long.parseLong(req.getParameter("id")));
             resp.sendRedirect("/admin/show");
         } catch (SQLException e) {
+            e.printStackTrace();
             req.setAttribute("message", "DB access problem! Try one more time!");
-            req.getRequestDispatcher("admin_panel.jsp").forward(req, resp);
+            req.getRequestDispatcher("/admin/admin_panel.jsp").forward(req, resp);
         }
     }
 }
