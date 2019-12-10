@@ -20,7 +20,7 @@ import java.util.List;
 public class ShowServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ClientService<User, Long> clientService = new UserDaoFactory().getDAO();
+        ClientService<User, Long> clientService = UserDaoFactory.getDAO();
         List<User> result = new ArrayList<>();
         try {
             result = clientService.showAllUsers();

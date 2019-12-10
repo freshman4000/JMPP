@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class DeleteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ClientService<User, Long> clientService = new UserDaoFactory().getDAO();
+        ClientService<User, Long> clientService = UserDaoFactory.getDAO();
         try {
             clientService.deleteUser(Long.parseLong(req.getParameter("id")));
             resp.sendRedirect("/admin/show");

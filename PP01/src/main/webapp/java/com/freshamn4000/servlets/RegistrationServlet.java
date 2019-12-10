@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class RegistrationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ClientService<User, Long> clientService = new UserDaoFactory().getDAO();
+        ClientService<User, Long> clientService = UserDaoFactory.getDAO();
         try {
             //validate reg via method - it returns if email is unique in db
         if (clientService.validateRegistration(req.getParameter("email"))) {
