@@ -41,17 +41,16 @@
 </head>
 <body>
 <section class="fields">
-    <form action="/update" method="POST">
-        <input type="hidden" name="id" value=<%=request.getParameter("id")%>>
-        Firstname: <br><input type="text" name="username" placeholder="<%=request.getParameter("name")%>"> <br>
-        Lastname: <br><input type="text" name="lastname" placeholder="<%=request.getParameter("lastname")%>"> <br>
-        Email: <br><input type="email" name="email" placeholder="<%=request.getParameter("email")%>"> <br>
-        Birthdate: <br><input type="date" name="birthdate" placeholder="<%=request.getParameter("birthdate")%>"> <br>
-        Phone number: <br><input type="tel" name="phone" pattern="\+[0-9][0-9]{10}"
-                                    placeholder="<%=request.getParameter("phone")%>"> <br>
-        <input id="button" type="submit" value="Update user">
+    <form action="/admin/add_user" method="POST">
+        Firstname: <br><input type="text" name="username"> <br>
+        Lastname: <br><input type="text" name="lastname"> <br>
+        Email: <br><input type="email" name="email"> <br>
+        Birthdate: <br><input type="date" name="birthdate"> <br>
+        Phone number: <br><input type="text" name="phone" pattern="\+[0-9][0-9]{10}"
+                                 required placeholder="+9(999)999-99-99 format"> <br>
+        <input id="button" type="submit" value="Add user">
     </form>
-    <form action="index.jsp" method="POST">
+    <form action="/index.jsp" method="GET">
         <input id="button1" type="submit" value="Go back">
     </form>
 </section>

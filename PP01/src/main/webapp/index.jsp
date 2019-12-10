@@ -49,8 +49,8 @@
 </head>
 <body>
 <ul class="navbar">
-    <li><a href="add_user.jsp">Add user</a></li>
-    <li><a href="/show">Show all users</a></li>
+    <li><a href="/admin/add_user">Add user</a></li>
+    <li><a href="/admin/show">Show all users</a></li>
 </ul>
 <section class="container">
 <%
