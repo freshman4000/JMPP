@@ -14,11 +14,17 @@ import java.util.Properties;
  * supplies UserService, needed for DB connectivity. For example, if fetching.type is jdbc - this class will produce
  * JDBCClientService, in case of "hibernate" - HibernateClientService.
  */
-public class UserDaoFactory extends DAOFactory<User, Long> {
+public class UserDaoFactory implements DAOFactory<User, Long> {
 
-    @Override
-    public ClientService<User, Long> getDAO() {
-        return createDAO();
+    private static UserDaoFactory userDaoFactory;
+
+    private UserDaoFactory() {}
+    public static ClientService<User, Long> getDAO() {
+        if (userDaoFactory == null) {
+            return new UserDaoFactory().createDAO();
+        } else {
+            return userDaoFactory.createDAO();
+        }
     }
     @Override
     public ClientService<User, Long> createDAO() {
