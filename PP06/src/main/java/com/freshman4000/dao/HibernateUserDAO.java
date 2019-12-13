@@ -21,7 +21,7 @@ public class HibernateUserDAO implements UserDAO {
     @Override
     @SuppressWarnings("unchecked")
     public List<User> findAllUsers() {
-        return sessionFactory.getCurrentSession().createQuery("from User").getResultList();
+        return sessionFactory.getCurrentSession().createQuery("from User").list();
     }
 
     @Override

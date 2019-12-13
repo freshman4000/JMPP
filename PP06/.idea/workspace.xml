@@ -2,11 +2,16 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="simpleSpringMVC:war exploded" />
+      <artifact name="PP06:war exploded" />
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fbfccde-dde4-48c4-876c-62a7333808fb" name="Default Changelist" comment="" />
+    <list default="true" id="5fbfccde-dde4-48c4-876c-62a7333808fb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/config/PersistenceConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/config/PersistenceConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/dao/HibernateUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/dao/HibernateUserDAO.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +43,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1UvZEWOAaSTQtIbcClFjNw8fHOk" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -60,6 +66,7 @@
       <recent name="com.freshman4000.model" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
       <recent name="$PROJECT_DIR$/src/main/java/com/freshman4000/interfaces" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -102,10 +109,9 @@
       <method v="2" />
     </configuration>
     <configuration name="SimpleSpringMVC" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.29" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="12">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
-        <artifact name="simpleSpringMVC:war exploded">
+        <artifact name="PP06:war exploded">
           <settings>
             <option name="CONTEXT_PATH" value="" />
           </settings>
@@ -170,7 +176,7 @@
       <method v="2">
         <option name="Make" enabled="true" />
         <option name="BuildArtifacts" enabled="true">
-          <artifact name="simpleSpringMVC:war exploded" />
+          <artifact name="PP06:war exploded" />
         </option>
       </method>
     </configuration>
@@ -253,10 +259,22 @@
       <workItem from="1576245642241" duration="381000" />
       <workItem from="1576246380371" duration="9816000" />
       <workItem from="1576261771029" duration="15138000" />
+      <workItem from="1576279587917" duration="682000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
