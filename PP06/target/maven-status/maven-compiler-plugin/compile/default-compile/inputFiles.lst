@@ -1,0 +1,11 @@
+/home/v1/projects/simpleSpringMVC/src/main/java/com/freshman4000/service/ClientServiceImpl.java
+/home/v1/projects/simpleSpringMVC/src/main/java/com/freshman4000/config/WebConfig.java
+/home/v1/projects/simpleSpringMVC/src/main/java/com/freshman4000/model/User.java
+/home/v1/projects/simpleSpringMVC/src/main/java/com/freshman4000/service/ClientService.java
+/home/v1/projects/simpleSpringMVC/src/main/java/com/freshman4000/config/WebAppInitialiser.java
+/home/v1/projects/simpleSpringMVC/src/main/java/com/freshman4000/dao/UserDAO.java
+/home/v1/projects/simpleSpringMVC/src/main/java/com/freshman4000/controller/UserController.java
+/home/v1/projects/simpleSpringMVC/src/main/java/com/freshman4000/utility/FormGenerator.java
+/home/v1/projects/simpleSpringMVC/src/main/java/com/freshman4000/config/RootConfig.java
+/home/v1/projects/simpleSpringMVC/src/main/java/com/freshman4000/config/PersistenceConfig.java
+/home/v1/projects/simpleSpringMVC/src/main/java/com/freshman4000/dao/HibernateUserDAO.java

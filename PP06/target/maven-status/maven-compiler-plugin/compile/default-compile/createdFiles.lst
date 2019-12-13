@@ -1,0 +1,11 @@
+com/freshman4000/model/User.class
+com/freshman4000/config/RootConfig.class
+com/freshman4000/config/WebAppInitialiser.class
+com/freshman4000/utility/FormGenerator.class
+com/freshman4000/config/WebConfig.class
+com/freshman4000/service/ClientServiceImpl.class
+com/freshman4000/dao/UserDAO.class
+com/freshman4000/config/PersistenceConfig.class
+com/freshman4000/dao/HibernateUserDAO.class
+com/freshman4000/service/ClientService.class
+com/freshman4000/controller/UserController.class
