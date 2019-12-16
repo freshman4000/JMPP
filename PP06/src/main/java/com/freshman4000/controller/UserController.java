@@ -20,19 +20,14 @@ public class UserController {
     @RequestMapping("/")
     public String goToIndexPage(Model model) {
         List<User> userList = clientService.showAllUsers();
-        StringBuilder sb = new StringBuilder();
-        userList.forEach(x -> sb
-                .append(FormGenerator.getDeleteForm(x))
-                .append(FormGenerator.getUpdateForm(x))
-                .append(x.toString()).append("<br />"));
-        String answer = sb.toString();
-        model.addAttribute("message", answer.isEmpty() ? "DB is empty" : answer);
+        model.addAttribute("message", userList.isEmpty() ? "DB is empty" : FormGenerator.getHTML(userList));
         return "index";
     }
     @RequestMapping("/add_user_form")
     public String addUserForm() {
         return "registration";
     }
+
     @RequestMapping("/add_user")
     public String addUser(@ModelAttribute User user) {
         clientService.addUser(user);

@@ -2,6 +2,8 @@ package com.freshman4000.utility;
 
 import com.freshman4000.model.User;
 
+import java.util.List;
+
 public class FormGenerator {
     public static String getUpdateForm(User user) {
         return  "<form id=\"inline\" action=\"/update_user_form\" method=\"GET\">" +
@@ -24,5 +26,13 @@ public class FormGenerator {
         return  "<form id=\"inline\" action=\"/admin/setUserPass\" method=\"GET\">" +
                 "<input type=\"hidden\" name=\"id\" value=\"" + user.getId() + "\">" +
                 "<input type=\"submit\" value=\"update password\"></form>";
+    }
+    public static String getHTML(List<User> userList) {
+        StringBuilder sb = new StringBuilder();
+        userList.forEach(x -> sb
+                .append(FormGenerator.getDeleteForm(x))
+                .append(FormGenerator.getUpdateForm(x))
+                .append(x.toString()).append("<br />"));
+        return sb.toString();
     }
 }
