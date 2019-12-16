@@ -27,6 +27,7 @@ public class HibernateUserDAO implements UserDAO {
         Transaction tx = session.beginTransaction();
         session.save(new User("admin", "admin", "admin@admin.com", "2000-01-01", "+70000000000", "admin", "root"));
         tx.commit();
+        session.close();
     }
 
     @Override
