@@ -6,19 +6,19 @@ import java.util.List;
 
 public class FormGenerator {
     public static String getUpdateForm(User user) {
-        return  "<form id=\"inline\" action=\"/update_user_form\" method=\"GET\">" +
+        return  "<form id=\"inline\" action=\"/admin/update_user_form\" method=\"GET\">" +
                 "<input type=\"hidden\" name=\"id\" value=\"" + user.getId() + "\">" +
-                "<input type=\"hidden\" name=\"username\" value=\"" + user.getUsername() + "\">" +
+                "<input type=\"hidden\" name=\"firstname\" value=\"" + user.getFirstname() + "\">" +
                 "<input type=\"hidden\" name=\"lastname\" value=\"" + user.getLastname() + "\">" +
                 "<input type=\"hidden\" name=\"email\" value=\"" + user.getEmail() + "\">" +
                 "<input type=\"hidden\" name=\"birthdate\" value=\"" + user.getBirthdate() + "\">" +
                 "<input type=\"hidden\" name=\"phone\" value=\"" + user.getPhone() + "\">" +
-                "<input type=\"hidden\" name=\"role\" value=\"" + user.getRole() + "\">" +
+                "<input type=\"hidden\" name=\"role\" value=\"" + user.getRoles() + "\">" +
                 "<input type=\"hidden\" name=\"password\" value=\"" + user.getPassword() + "\">" +
                 "<input id=\"sub\" type=\"submit\" value=\"update\"></form>";
     }
     public static String getDeleteForm(User user) {
-        return  "<form id=\"inline\" action=\"/delete\" method=\"POST\">" +
+        return  "<form id=\"inline\" action=\"/admin/delete\" method=\"POST\">" +
                 "<input type=\"hidden\" name=\"id\" value=\"" + user.getId() + "\">" +
                 "<input type=\"submit\" value=\"delete\"></form>";
     }

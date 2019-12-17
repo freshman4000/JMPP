@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; ISO-8859-1"
          pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -80,10 +81,12 @@
             margin-right: 5px;
         }
     </style>
+
 </head>
 <body>
 <ul class="navbar">
-    <li><a href="/add_user_form">Add user</a></li>
+    <li><a href="/admin/add_user_form">Add user</a></li>
+    <c:import url="logout.jsp"></c:import>
 </ul>
 
 <section class="container">

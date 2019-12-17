@@ -32,4 +32,9 @@ public class ClientServiceImpl implements ClientService {
     public void updateUser(User entity) {
         userDAO.updateUser(entity);
     }
+
+    @Override
+    public User getUserByUserName(String username) {
+       return userDAO.getUserByUserName(username);
+    }
 }

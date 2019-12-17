@@ -16,4 +16,6 @@ public interface ClientService {
     void deleteUser(User user);
 
     void updateUser(User user);
+
+    User getUserByUserName(String username);
 }

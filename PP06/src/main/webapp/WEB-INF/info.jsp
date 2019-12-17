@@ -6,6 +6,6 @@
 </head>
 
 <body>
-    Message is: ${result}
+    This is info page
 </body>
 </html>

@@ -16,7 +16,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan(value = "com.freshman4000")
+@ComponentScan(basePackages = "com.freshman4000")
 @PropertySource("classpath:hibernate.properties")
 public class PersistenceConfig {
 

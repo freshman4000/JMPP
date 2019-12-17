@@ -1,0 +1,51 @@
+APP INITIALIZATION - SO THAT WHEN APACHE TOMCAT STARTS - APPLICATION CONTEXT WAS CREATED ON THE FLY
+
+====>1. For Spring MVC init we use WebAppInit(whatever name) extended from AbstractAnnotationConfigDispatcherServletInitializer
+and override 3 methods:
+1) getRootConfigClasses() - it returns Class which incapsulates root config of application - @Configuration annotated class AKA Bean
+which implements WebMvcConfigurer interface
+2) getServletConfigClasses() - it returns class incapsulating WebConfig(whatever name) bean annotated @Configuration, @EnableWebMVC, @ComponentScan
+of the package. In this class we produce @Bean which returns object of ViewResolver by factory method and in this method we instansiate
+InternalViewResolver and set it Prefix and Suffix - where our views are stored (f.ex /WEB-INF/ - prefix, .jsp or .html - suffix).
+3) getServletMappings() - method where we put the starting point URL for our DispatcherServlet.
+
+====>2. IF WE USE PERSISTENCE LAYER AS WELL - WE NEED PersistenceConfig(whatever name) - SO WE CREATE Bean annotated by
+@Configuration
+@EnableTransactionManagement
+@ComponentScan(basepackage="blabla")
+@PropertySource("classpath:application.properties") - if needed from our resources folder
+Here we need to create @Beans
+
+1. @Autowired Environment environment - with field or setter based DI - this bean is responsible for IoC container environment. We can get hold
+of resource folder ny the means of this bean simply calling environment.getRequiredProperty("key-from-properties file out of resource folder");
+2. Utility method - NOT BEAN - getProperties() - which returns Property object with setted properties for hibernate - dialect, show_sql, hbm2dll)
+3. Datasource @Bean - which instatiates inside of it DriverManagerDataSource dataSource = new DriverManagerDataSource(), which is NOT
+PREFERABLE In production or we can import Tomcat datasource pool tool by adding dependency to POM.XML and then we need to set properties to
+this DataSource for jdbc connection: driver, db url, uname, pass;
+4. LocalSessionFactoryBean - which is responsible for creation of sessionFactory. So we instantiate object
+LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean(); and we need to set it 3 things:
+                1. Datasource from previous bean.
+                2. HibernateProperties from previous utility method
+                3. and add annotated classes which are entities or setScanPackage ("model" - for example) where those entities are in.
+5. HibernateTransactionManager - @Bean
+HibernateTransactionManager transactionManager = new HibernateTransactionManager(); - instantiate it and set sessionfactory - by
+setSessionFactory() method which takes argument - PREVIOUS BEAN. GETOBJECT - which returns sessionFactory)
+        transactionManager.setSessionFactory(sessionFactory().getObject());
+
+        ATTENTION: PLEASE WHEN WE MENTION DB URL in jdbc properties - make sure that it has TIME ZONE SETTLEMENT LIKE THIS
+        -----=======hibernate.connection.url=jdbc:mysql://localhost:3306/db_example?serverTimezone=Europe/Minsk&useSSL=false
+====>3. IF WE USE Spring Security -
+
+1. we need SpringSecurityInitializer(whatever name) WHICH EXTENDS
+AbstaractSecurityWebApplicationInitializer - IT CAN BE EMPTY - IT JUST REGISTERS security module in IoC container
+2. We need security @Configuration @EnableWebSecurity bean which EXTENDS WebSecurityConfigurerAdapter
+and we need to @Override TWO(2) methods:
+            --configure(AuthentificationManagerBuilder auth) - here we set loading info from database about logging user
+            by auth.userDetailService(userDetailsService());
+
+
+            --configure(HttpSecurity http) here we can set personal login page by
+            http.formLogin()
+                .loginPage("/login") - its our login page mapping
+                .successHandler(new LoginSuccessHandler()) - its @Autjectowired object, created in handler package in config folder
+

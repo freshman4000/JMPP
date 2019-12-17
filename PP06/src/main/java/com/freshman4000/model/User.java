@@ -1,16 +1,21 @@
 package com.freshman4000.model;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Table
-public class User {
+public class User implements UserDetails {
     @Id
     @Column
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column
-    private String username;
+    private String firstname;
     @Column
     private String lastname;
     @Column
@@ -20,31 +25,32 @@ public class User {
     @Column
     private String phone;
     @Column
-    private String role;
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    private List<Role> roles;
     @Column
     private String password;
 
     public User() {
     }
 
-    public User(String username, String lastname, String email, String birthdate, String phone, String role, String password) {
-        this.username = username;
+    public User(String firstname, String lastname, String email, String birthdate, String phone, List<Role> roles, String password) {
+        this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.birthdate = birthdate;
         this.phone = phone;
-        this.role = role;
+        this.roles = roles;
         this.password = password;
     }
 
-    public User(Long id, String username, String lastname, String email, String birthdate, String phone, String role, String password) {
+    public User(Long id, String firstname, String lastname, String email, String birthdate, String phone, List<Role> roles, String password) {
         this.id = id;
-        this.username = username;
+        this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
         this.birthdate = birthdate;
         this.phone = phone;
-        this.role = role;
+        this.roles = roles;
         this.password = password;
     }
 
@@ -57,11 +63,35 @@ public class User {
     }
 
     public String getUsername() {
-        return username;
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     public String getLastname() {
@@ -96,12 +126,17 @@ public class User {
         this.phone = phone;
     }
 
-    public String getRole() {
-        return role;
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return roles;
     }
 
     public String getPassword() {
@@ -115,6 +150,6 @@ public class User {
     @Override
     public String toString() {
         return String.format("User: " +
-                "id<span id=\"ufi\">%s</span> name<span id=\"ufi\">%s</span> last name<span id=\"ufi\">%s</span> email<span id=\"ufi\">%s</span> birth date<span id=\"ufi\">%s</span> phoneNumber<span id=\"ufi\">%s</span> role<span id=\"ufi\">%s</span>", id, username, lastname, email, birthdate, phone, role);
+                "id<span id=\"ufi\">%s</span> name<span id=\"ufi\">%s</span> last name<span id=\"ufi\">%s</span> email<span id=\"ufi\">%s</span> birth date<span id=\"ufi\">%s</span> phoneNumber<span id=\"ufi\">%s</span> role<span id=\"ufi\">%s</span>", id, firstname, lastname, email, birthdate, phone, roles);
     }
 }

@@ -7,9 +7,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5fbfccde-dde4-48c4-876c-62a7333808fb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/admin_panel.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/config/PersistenceConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/config/PersistenceConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/config/WebAppInitialiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/config/WebAppInitialiser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/dao/HibernateUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/dao/HibernateUserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/dao/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/service/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/service/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/service/ClientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/service/ClientServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/utility/FormGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/utility/FormGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/info.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/info.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/registration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/update_user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update_user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/simpleSpringMVC-1.0-SNAPSHOT/WEB-INF/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/simpleSpringMVC-1.0-SNAPSHOT/WEB-INF/info.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/simpleSpringMVC-1.0-SNAPSHOT/WEB-INF/info.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/simpleSpringMVC-1.0-SNAPSHOT/WEB-INF/registration.jsp" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,10 +33,48 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="db_example@localhost" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="db_example@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="db_example@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="db_example: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="db_example@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="db_example: schema" type="76f4a085:MysqlImplModel$Schema" />
+        <item name="Role: table" type="285a2a93:MysqlImplModel$Table" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -42,11 +96,14 @@
     </option>
   </component>
   <component name="ProjectId" id="1UvZEWOAaSTQtIbcClFjNw8fHOk" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../spring/spring_security" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -58,15 +115,19 @@
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.freshman4000.config.handler" />
       <recent name="com.freshman4000.dao" />
       <recent name="com.freshman4000.service" />
       <recent name="com.freshman4000.utility" />
       <recent name="com.freshman4000.model" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/java/com/freshman4000/interfaces" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
@@ -259,6 +320,7 @@
       <workItem from="1576246380371" duration="9816000" />
       <workItem from="1576261771029" duration="15138000" />
       <workItem from="1576279587917" duration="682000" />
+      <workItem from="1576572847595" duration="37386000" />
     </task>
     <servers />
   </component>
