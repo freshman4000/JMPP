@@ -93,9 +93,10 @@
         <input class="role" type="checkbox" name="role" value="USER" checked> User
         <input class="role" type="checkbox" name="role" value="ADMIN"> Admin
         <br>
-        Password: <br><input id="f1" type="password" name="password" pattern="[A-Za-z0-9]{8}"
-                             required placeholder="your old or new pass here"> <br>
+        Password: <br><input id="f1" type="password" name="password" pattern="[A-Za-z0-9$.]{8,}"
+                             placeholder="leave blank to save previous password"> <br>
         <input type="hidden" name="previousEmail" value="${user.email}">
+        <input type="hidden" name="previousPass" value="${user.password}">
         <input id="button" type="submit" value="Update user">
     </form>
     <form action="/admin/admin_panel" method="POST">

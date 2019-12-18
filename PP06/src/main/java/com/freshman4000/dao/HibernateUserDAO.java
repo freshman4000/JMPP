@@ -31,8 +31,12 @@ public class HibernateUserDAO implements UserDAO {
     public void initAdmin() {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-        session.save(new User("admin", "admin", "admin@admin.com", "2000-01-01", "+70000000000", Arrays.asList( new Role("USER"), new Role("ADMIN")), "$2y$10$cXP8xitQIlaJWBH4PkqwV.jcmKnvVuFdORtxKRESuLzblhqC9pkBC"));
-        session.save(new User("user", "user", "user@user.com", "2000-01-01", "+70000000000", Arrays.asList( new Role("USER")), "$2y$10$cXP8xitQIlaJWBH4PkqwV.jcmKnvVuFdORtxKRESuLzblhqC9pkBC"));
+        User admin = new User("admin", "admin", "admin@admin.com", "2000-01-01", "+70000000000", Arrays.asList( new Role("USER"), new Role("ADMIN")), "rootroot");
+        User user = new User("user", "user", "user@user.com", "2000-01-01", "+70000000000", Arrays.asList( new Role("USER")), "rootroot");
+        admin.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        session.save(admin);
+        session.save(user);
         tx.commit();
         session.close();
     }
@@ -56,7 +60,11 @@ public class HibernateUserDAO implements UserDAO {
 
     @Override
     public void updateUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        if (user.getPassword().endsWith("same")) {
+            user.setPassword(user.getPassword().substring(0, user.getPassword().length() - 4));
+        } else {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
         sessionFactory.getCurrentSession().update(user);
     }
 

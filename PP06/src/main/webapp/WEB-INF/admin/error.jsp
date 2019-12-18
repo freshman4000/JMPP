@@ -57,7 +57,7 @@
     <li><a href="/logout">Logout</a></li>
 </ul>
 <section class="container">
-    ${exMessage}
+    ${messageEx}
 </section>
 
 </body>

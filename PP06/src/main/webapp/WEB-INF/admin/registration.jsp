@@ -83,7 +83,7 @@
         <input class="role" type="checkbox" name="role" value="USER"> User
         <input class="role" type="checkbox" name="role" value="ADMIN"> Admin
         <br>
-        Password: <br><input id = "f1" type="password" name="password" pattern="[A-Za-z0-9]{8}"
+        Password: <br><input id = "f1" type="password" name="password" pattern="[A-Za-z0-9$.]{8,}"
                                  required placeholder="Text/numbers 8 characters"> <br>
         <input id="button" type="submit" value="Add user">
     </form>

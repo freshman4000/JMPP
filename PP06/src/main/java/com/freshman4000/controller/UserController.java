@@ -35,7 +35,7 @@ public class UserController {
      * will be redirected to info.jsp by this controller.
      * @return standard bulk view - info.jsp.
      */
-    @RequestMapping(value = "/**", method = RequestMethod.GET)
+    @GetMapping("/")
     public String rootPage() {
         return "info";
     }
@@ -44,7 +44,7 @@ public class UserController {
      * This controller is resp for redirecting to login view.
      * @return login view - login.jsp.
      */
-    @RequestMapping(value = "login", method = RequestMethod.GET)
+    @GetMapping("login")
     public String loginPage() {
         return "login";
     }
@@ -55,7 +55,7 @@ public class UserController {
      * @param model Spring model.
      * @return user view - hello.jsp.
      */
-    @RequestMapping(value = "hello", method = RequestMethod.GET)
+    @GetMapping("hello")
     public String printWelcome(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
@@ -80,7 +80,7 @@ public class UserController {
      * Transfer controller to form where we add new user.
      * @return admin new user form addition view.
      */
-    @RequestMapping("/admin/add_user_form")
+    @GetMapping("/admin/add_user_form")
     public String addUserForm() {
         return "admin/registration";
     }
@@ -90,30 +90,19 @@ public class UserController {
      * @param checkboxValue - array of values retrieved from checkboxes. Can't be not filled, cos exception will be thrown in this case.
      * @param user user object, pre-filled by @ModelAtt.
      * @return redirection to admin panel url and from there directly to index.page where changed users info will be rendered.
-     * @throws CustomException - exception that can be thrown by udValidator method, in case that new user email - exists in DB.
      */
-    @RequestMapping("/admin/add_user")
-    public String addUser(@RequestParam("role")String[] checkboxValue, @ModelAttribute User user) throws CustomException {
-        udValidator.validate(user);
-        List<Role> userRoles = new ArrayList<>();
-        Arrays.stream(checkboxValue).forEach(x -> userRoles.add(new Role(x)));
-        user.setRoles(userRoles);
-        clientService.addUser(user);
-        return "redirect:/admin/admin_panel";
-    }
-
-    /**
-     * Custom exception handler controller.
-     * @param ex - object of CustomException.
-     * @return ModelAndView object with added view (error.jsp) and exception message.
-     */
-    @ExceptionHandler(CustomException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ModelAndView handleResourceNotFoundException(CustomException ex) {
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("exMessage", ex.getMessage());
-        mv.setViewName("/admin/error");
-        return mv;
+    @PostMapping("/admin/add_user")
+    public String addUser(@RequestParam("role")String[] checkboxValue, @ModelAttribute User user, Model model) {
+        if (!udValidator.validate(user)) {
+            model.addAttribute("messageEx", "Email is registered already!");
+            return "/admin/error";
+        } else {
+            List<Role> userRoles = new ArrayList<>();
+            Arrays.stream(checkboxValue).forEach(x -> userRoles.add(new Role(x)));
+            user.setRoles(userRoles);
+            clientService.addUser(user);
+            return "redirect:/admin/admin_panel";
+        }
     }
 
     /**
@@ -121,7 +110,7 @@ public class UserController {
      * @param user - user - needed to be deleted.
      * @return redirection to admin_panel url and then to index.page with changed DB users info.
      */
-    @RequestMapping("/admin/delete")
+    @PostMapping("/admin/delete")
     public String deleteUser(@ModelAttribute User user) {
         clientService.deleteUser(user);
         return "redirect:/admin/admin_panel";
@@ -133,7 +122,7 @@ public class UserController {
      *             further used for pre-filling user update form with existing values.
      * @return MAV object with defined view and object of user to be updated.
      */
-    @RequestMapping("/admin/update_user_form")
+    @GetMapping("/admin/update_user_form")
     public ModelAndView updateUserForm(@ModelAttribute User user) {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("/admin/update_user");
@@ -152,19 +141,29 @@ public class UserController {
      * @param previousEmail - previously settled user email.
      * @param user - new user pre-filled by @ModelAtt annotation.
      * @return redirection to admin panel controller and then to index view with changed DB of users.
-     * @throws CustomException - exception that is handled by exception handler controller.
      */
-    @RequestMapping("/admin/update")
+    @PostMapping("/admin/update")
     public String updateUser(@RequestParam("role") String[] checkboxValue,
                              @RequestParam("previousEmail") String previousEmail,
-                             @ModelAttribute User user) throws CustomException {
+                             @RequestParam("previousPass") String previousPass,
+                             @ModelAttribute User user,
+                             Model model) {
+        boolean validated = true;
         if (!previousEmail.equals(user.getEmail())) {
-            udValidator.validate(user);
+            validated = udValidator.validate(user);
         }
-        List<Role> userRoles = new ArrayList<>();
-        Arrays.stream(checkboxValue).forEach(x -> userRoles.add(new Role(x)));
-        user.setRoles(userRoles);
-        clientService.updateUser(user);
-        return "redirect:/admin/admin_panel";
+        if (validated) {
+            List<Role> userRoles = new ArrayList<>();
+            Arrays.stream(checkboxValue).forEach(x -> userRoles.add(new Role(x)));
+            user.setRoles(userRoles);
+            if (user.getPassword().equals("")) {
+                user.setPassword(previousPass.concat("same"));
+            }
+            clientService.updateUser(user);
+            return "redirect:/admin/admin_panel";
+        } else {
+            model.addAttribute("messageEx", "Email is registered already!");
+            return "/admin/error";
+        }
     }
 }
