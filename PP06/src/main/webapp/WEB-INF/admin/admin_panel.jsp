@@ -49,7 +49,8 @@
 </head>
 <body>
 <ul class="navbar">
-    <li><a href="//admin/add_user_form">Add user</a></li>
+    <li><a href="/admin/add_user_form">Add user</a></li>
+    <li><a href="/admin/admin_panel">Go back</a></li>
     <li><a href="/logout">Logout</a></li>
 </ul>
 <section class="container">

@@ -1,18 +1,19 @@
 package com.freshman4000.controller;
 
+import com.freshman4000.config.validators.UDValidator;
 import com.freshman4000.model.Role;
 import com.freshman4000.model.User;
 import com.freshman4000.service.ClientService;
+import com.freshman4000.utility.CustomException;
 import com.freshman4000.utility.FormGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
@@ -24,6 +25,10 @@ import java.util.List;
 public class UserController {
     @Autowired
     private ClientService clientService;
+
+    @Autowired
+    @Qualifier("emailValidator")
+    private UDValidator<User> udValidator;
 
     @RequestMapping(value = "/**", method = RequestMethod.GET)
     public String rootPage() {
@@ -54,12 +59,21 @@ public class UserController {
     }
 
     @RequestMapping("/admin/add_user")
-    public String addUser(@RequestParam("role")String[] checkboxValue, @ModelAttribute User user) {
+    public String addUser(@RequestParam("role")String[] checkboxValue, @ModelAttribute User user) throws CustomException {
+        udValidator.validate(user);
         List<Role> userRoles = new ArrayList<>();
         Arrays.stream(checkboxValue).forEach(x -> userRoles.add(new Role(x)));
         user.setRoles(userRoles);
         clientService.addUser(user);
         return "redirect:/admin/admin_panel";
+    }
+    @ExceptionHandler(CustomException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ModelAndView handleResourceNotFoundException(CustomException ex) {
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("exMessage", ex.getMessage());
+        mv.setViewName("/admin/error");
+        return mv;
     }
     @RequestMapping("/admin/delete")
     public String deleteUser(@ModelAttribute User user) {
@@ -74,7 +88,13 @@ public class UserController {
         return mv;
     }
     @RequestMapping("/admin/update")
-    public String updateUser(@RequestParam("role") String[] checkboxValue, @ModelAttribute User user) {
+    public String updateUser(@RequestParam("role") String[] checkboxValue,
+                             @RequestParam("previousEmail") String previousEmail,
+                             @ModelAttribute User user) throws CustomException {
+        //if prevEmail doesn't match newEmail while updating - we need e-mail validation for duplicates
+        if (!previousEmail.equals(user.getEmail())) {
+            udValidator.validate(user);
+        }
         List<Role> userRoles = new ArrayList<>();
         Arrays.stream(checkboxValue).forEach(x -> userRoles.add(new Role(x)));
         user.setRoles(userRoles);

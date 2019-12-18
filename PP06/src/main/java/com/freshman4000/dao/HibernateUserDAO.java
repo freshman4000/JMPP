@@ -1,5 +1,6 @@
 package com.freshman4000.dao;
 
+import com.freshman4000.config.validators.UDValidator;
 import com.freshman4000.model.Role;
 import com.freshman4000.model.User;
 import org.hibernate.Criteria;
@@ -8,6 +9,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,6 +23,9 @@ public class HibernateUserDAO implements UserDAO {
     private SessionFactory sessionFactory;
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
@@ -29,8 +34,8 @@ public class HibernateUserDAO implements UserDAO {
     public void initAdmin() {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-        session.save(new User("admin", "admin", "admin@admin.com", "2000-01-01", "+70000000000", Arrays.asList( new Role("USER"), new Role("ADMIN")), "root"));
-        session.save(new User("user", "user", "user@user.com", "2000-01-01", "+70000000000", Arrays.asList( new Role("USER")), "root"));
+        session.save(new User("admin", "admin", "admin@admin.com", "2000-01-01", "+70000000000", Arrays.asList( new Role("USER"), new Role("ADMIN")), "$2y$10$cXP8xitQIlaJWBH4PkqwV.jcmKnvVuFdORtxKRESuLzblhqC9pkBC"));
+        session.save(new User("user", "user", "user@user.com", "2000-01-01", "+70000000000", Arrays.asList( new Role("USER")), "$2y$10$cXP8xitQIlaJWBH4PkqwV.jcmKnvVuFdORtxKRESuLzblhqC9pkBC"));
         tx.commit();
         session.close();
     }
@@ -43,6 +48,7 @@ public class HibernateUserDAO implements UserDAO {
 
     @Override
     public void addUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         sessionFactory.getCurrentSession().save(user);
     }
 
@@ -53,6 +59,7 @@ public class HibernateUserDAO implements UserDAO {
 
     @Override
     public void updateUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         sessionFactory.getCurrentSession().update(user);
     }
 

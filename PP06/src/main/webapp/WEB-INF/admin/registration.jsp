@@ -68,6 +68,7 @@
 </head>
 <body>
 <ul class="navbar">
+    <li><a href="/admin/admin_panel">Go back</a></li>
     <c:import url="logout.jsp"></c:import>
 </ul>
 <section class="fields">
