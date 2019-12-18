@@ -1,4 +1,4 @@
-package com.freshman4000.config.validators;
+package com.freshman4000.validators;
 
 import com.freshman4000.model.User;
 import com.freshman4000.service.ClientService;

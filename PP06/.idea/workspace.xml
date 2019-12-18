@@ -8,13 +8,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5fbfccde-dde4-48c4-876c-62a7333808fb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/config/SpringSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/config/SpringSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/config/validators/EmailValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/validators/EmailValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/config/validators/UDValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/validators/UDValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/dao/HibernateUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/dao/HibernateUserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/admin_panel.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/admin_panel.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/registration.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update_user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update_user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/model/User.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -310,7 +308,7 @@
       <workItem from="1576246380371" duration="9816000" />
       <workItem from="1576261771029" duration="15138000" />
       <workItem from="1576279587917" duration="682000" />
-      <workItem from="1576572847595" duration="44160000" />
+      <workItem from="1576572847595" duration="48479000" />
     </task>
     <servers />
   </component>

@@ -1,13 +1,10 @@
 package com.freshman4000.dao;
 
-import com.freshman4000.config.validators.UDValidator;
 import com.freshman4000.model.Role;
 import com.freshman4000.model.User;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
