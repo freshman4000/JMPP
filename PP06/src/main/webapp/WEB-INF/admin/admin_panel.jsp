@@ -8,6 +8,7 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
         }
+
         /* Navbar Styling */
         .navbar {
             list-style: none;
@@ -17,27 +18,33 @@
             border-radius: 5px;
             overflow: auto;
         }
+
         .navbar li {
             float: left;
         }
+
         .navbar li a {
             display: block;
             color: #fff;
             text-decoration: none;
             padding: 15px 20px;
         }
+
         .navbar li a:hover {
             background: #446190;
             color: #f4f4f4;
         }
+
         #inline {
             Display: inline;
             margin-left: 5px;
             margin-right: 5px;
         }
+
         .container {
             margin-top: 30px;
         }
+
         #ufi {
             color: #fff;
             background-color: #4c6ca0;

@@ -18,7 +18,7 @@ public class SetPassServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         ClientService<User, Long> clientService = UserDaoFactory.getDAO();
         try {
-                clientService.updatePassword(Long.parseLong(req.getParameter("id")), req.getParameter("password"));
+            clientService.updatePassword(Long.parseLong(req.getParameter("id")), req.getParameter("password"));
             resp.sendRedirect("/admin/admin_panel.jsp");
         } catch (SQLException e) {
             req.setAttribute("message", "DB access problem! Try one more time!");

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User data</title>
+    <link th:href="@{/css/custom.css}" rel="stylesheet" media="screen">
+    <style>
+    </style>
+
+</head>
+<body>
+<section id="inline" class="container">
+        <div id="frag" th:fragment="userfrag">
+               id <span th:text=" ${user.id}"></span>
+               firstname <span th:text=" ${user.firstname}"></span>
+               lastname <span th:text=" ${user.lastname}"></span>
+               email <span th:text=" ${user.email}"></span>
+               birthdate <span th:text=" ${user.birthdate}"></span>
+               phone <span th:text=" ${user.phone}"></span>
+               roles <span th:text=" ${user.roles}"></span>
+        </div>
+</section>
+</body>
+</html>

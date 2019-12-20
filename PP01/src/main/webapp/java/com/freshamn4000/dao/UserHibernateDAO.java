@@ -19,6 +19,7 @@ public class UserHibernateDAO implements UserDAO<User, Long> {
     public UserHibernateDAO(Session session) {
         this.session = session;
     }
+
     @Override
     public List<User> findAllUsers() {
         try {
@@ -33,6 +34,7 @@ public class UserHibernateDAO implements UserDAO<User, Long> {
         Query query = session.createQuery("SELECT MAX(id) FROM User");
         return (Long) query.uniqueResult();
     }
+
     @Override
     public Long addUser(User user) {
         try {
@@ -44,6 +46,7 @@ public class UserHibernateDAO implements UserDAO<User, Long> {
             session.close();
         }
     }
+
     @Override
     public void deleteUser(Long userId) {
         Transaction tx = session.beginTransaction();
@@ -54,6 +57,7 @@ public class UserHibernateDAO implements UserDAO<User, Long> {
         tx.commit();
         session.close();
     }
+
     @Override
     public void updateUser(Long userId, User user) {
         Transaction tx = session.beginTransaction();
@@ -81,10 +85,11 @@ public class UserHibernateDAO implements UserDAO<User, Long> {
         tx.commit();
         session.close();
     }
+
     @Override
     public void updatePassword(Long field, String password) throws SQLException {
         Transaction tx = session.beginTransaction();
-        Registration fetchedRegistration = (Registration)session.get(Registration.class, field);
+        Registration fetchedRegistration = (Registration) session.get(Registration.class, field);
         fetchedRegistration.setPassword(password);
         session.update(fetchedRegistration);
         tx.commit();
@@ -93,7 +98,7 @@ public class UserHibernateDAO implements UserDAO<User, Long> {
 
     @Override
     public boolean validateRegistration(String email) throws SQLException {
-        boolean result = (Long)session.createQuery("SELECT COUNT(*) FROM User WHERE email = :emailParam").setString("emailParam", email).uniqueResult() == 0;
+        boolean result = (Long) session.createQuery("SELECT COUNT(*) FROM User WHERE email = :emailParam").setString("emailParam", email).uniqueResult() == 0;
         System.out.println(email);
         System.out.println(result);
         session.close();
@@ -102,7 +107,7 @@ public class UserHibernateDAO implements UserDAO<User, Long> {
 
     @Override
     public boolean validateLogin(String email, String password) throws SQLException {
-        String fetchedPass = (String)session.createQuery("SELECT password FROM Registration WHERE user.id = (SELECT id FROM User WHERE email = :emailParam)").setParameter("emailParam", email).uniqueResult();
+        String fetchedPass = (String) session.createQuery("SELECT password FROM Registration WHERE user.id = (SELECT id FROM User WHERE email = :emailParam)").setParameter("emailParam", email).uniqueResult();
         session.close();
         return fetchedPass.equals(password);
     }

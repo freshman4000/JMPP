@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; ISO-8859-1"
-         pageEncoding="ISO-8859-1" isELIgnored="false"%>
+         pageEncoding="ISO-8859-1" isELIgnored="false" %>
 <html>
 <head>
     <title>Info page</title>
 </head>
 
 <body>
-    This is info page
+This is info page
 </body>
 </html>

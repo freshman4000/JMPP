@@ -19,7 +19,7 @@ public class User {
     private String birthDate;
     @Column(name = "phone_number")
     private String phoneNumber;
-    @Column(name="role")
+    @Column(name = "role")
     private String role;
 
     public User() {

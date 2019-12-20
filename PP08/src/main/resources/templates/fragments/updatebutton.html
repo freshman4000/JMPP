@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User data</title>
+    <link th:href="@{/css/custom.css}" rel="stylesheet" media="screen">
+    <style>
+    </style>
+</head>
+<body>
+<div id="inline" th:fragment="update">
+    <form id="frag" action="/admin/update_user_form" method="GET">
+        <input type="hidden" name="id" th:value="${user.id}"/>
+        <input type="hidden" name="firstname" th:value="${user.firstname}"/>
+        <input type="hidden" name="lastname" th:value="${user.lastname}"/>
+        <input type="hidden" name="email" th:value="${user.email}"/>
+        <input type="hidden" name="birthdate" th:value="${user.birthdate}"/>
+        <input type="hidden" name="phone" th:value="${user.phone}"/>
+        <input type="hidden" name="role" th:value="${user.roles}"/>
+        <input type="hidden" name="password" th:value="${user.password}"/>
+        <input type="submit" value="update">
+    </form>
+</div>
+</body>
+</html>

@@ -3,23 +3,25 @@ package com.freshamn4000.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name="registered")
+@Table(name = "registered")
 public class Registration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private Long id;
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
     @OneToOne
     private User user;
 
     public Registration() {
     }
+
     public Registration(String password, User user) {
         this.password = password;
         this.user = user;
     }
+
     public User getUser() {
         return user;
     }

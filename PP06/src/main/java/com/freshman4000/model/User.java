@@ -61,6 +61,7 @@ public class User implements UserDetails {
     public void setId(long id) {
         this.id = id;
     }
+
     @Override
     public String getUsername() {
         return email;

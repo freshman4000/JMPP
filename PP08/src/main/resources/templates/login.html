@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login page</title>
+    <style>
+        .fields {
+            background: #f4f4f4;
+            width: 200px;
+            margin-top: 20px;
+            margin-left: 30px;
+        }
+
+        .fields form {
+            margin: 15px 15px;
+        }
+
+        .fields input {
+            margin: 5px 0px;
+            width: 100%;
+            height: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+        #button, #button1 {
+            background: #4c6ca0;;
+            color: #fff;
+            width: 100%;
+            height: 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+<section class="fields">
+    <form action="/login" method="POST">
+        Email: <br><input type="email" name="email"> <br>
+        Password: <br><input type="password" name="password"> <br>
+        <input id="button" type="submit" value="Login">
+    </form>
+</section>
+</body>
+</html>

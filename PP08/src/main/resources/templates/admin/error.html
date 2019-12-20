@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin page</title>
+    <link th:href="@{/css/custom.css}" rel="stylesheet" media="screen">
+    <style>
+    </style>
+</head>
+<body>
+<ul class="navbar">
+    <div th:replace="/fragments/gobackbutton :: goback"></div>
+    <div th:replace="/fragments/logoutbutton :: logout"></div>
+</ul>
+<section class="container">
+   <div th:text="${messageEx}"></div>
+</section>
+
+</body>
+</html>

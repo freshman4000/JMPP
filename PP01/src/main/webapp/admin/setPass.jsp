@@ -9,15 +9,18 @@
             margin: 0;
             padding: 0;
         }
+
         .fields {
             background: #f4f4f4;
             width: 200px;
             margin-top: 20px;
             margin-left: 30px;
         }
+
         .fields form {
             margin: 15px 15px;
         }
+
         .fields input {
             margin: 5px 0px;
             width: 100%;
@@ -25,6 +28,7 @@
             border: none;
             border-radius: 5px;
         }
+
         #button, #button1 {
             background: #4c6ca0;;
             color: #fff;
@@ -34,13 +38,16 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         #button:hover, #button1:hover {
             background: #446190;
         }
+
         #role {
             background: #4c6ca0;;
             color: #fff;
         }
+
         .label {
             color: red;
         }

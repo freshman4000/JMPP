@@ -8,6 +8,7 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
         }
+
         .navbar {
             list-style: none;
             margin: 0;
@@ -16,15 +17,18 @@
             border-radius: 5px;
             overflow: auto;
         }
+
         .navbar li {
             float: left;
         }
+
         .navbar li a {
             display: block;
             color: #fff;
             text-decoration: none;
             padding: 15px 20px;
         }
+
         .navbar li a:hover {
             background: #446190;
             color: #f4f4f4;

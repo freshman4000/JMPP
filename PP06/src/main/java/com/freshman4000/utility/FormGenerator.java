@@ -6,7 +6,7 @@ import java.util.List;
 
 public class FormGenerator {
     public static String getUpdateForm(User user) {
-        return  "<form id=\"inline\" action=\"/admin/update_user_form\" method=\"GET\">" +
+        return "<form id=\"inline\" action=\"/admin/update_user_form\" method=\"GET\">" +
                 "<input type=\"hidden\" name=\"id\" value=\"" + user.getId() + "\">" +
                 "<input type=\"hidden\" name=\"firstname\" value=\"" + user.getFirstname() + "\">" +
                 "<input type=\"hidden\" name=\"lastname\" value=\"" + user.getLastname() + "\">" +
@@ -17,16 +17,19 @@ public class FormGenerator {
                 "<input type=\"hidden\" name=\"password\" value=\"" + user.getPassword() + "\">" +
                 "<input id=\"sub\" type=\"submit\" value=\"update\"></form>";
     }
+
     public static String getDeleteForm(User user) {
-        return  "<form id=\"inline\" action=\"/admin/delete\" method=\"POST\">" +
+        return "<form id=\"inline\" action=\"/admin/delete\" method=\"POST\">" +
                 "<input type=\"hidden\" name=\"id\" value=\"" + user.getId() + "\">" +
                 "<input type=\"submit\" value=\"delete\"></form>";
     }
+
     public static String getSetPassForm(User user) {
-        return  "<form id=\"inline\" action=\"/admin/setUserPass\" method=\"GET\">" +
+        return "<form id=\"inline\" action=\"/admin/setUserPass\" method=\"GET\">" +
                 "<input type=\"hidden\" name=\"id\" value=\"" + user.getId() + "\">" +
                 "<input type=\"submit\" value=\"update password\"></form>";
     }
+
     public static String getHTML(List<User> userList) {
         StringBuilder sb = new StringBuilder();
         userList.forEach(x -> sb

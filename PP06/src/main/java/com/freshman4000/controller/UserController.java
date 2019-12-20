@@ -33,6 +33,7 @@ public class UserController {
     /**
      * All authenticated users going for slash-urls other than those, mentioned in HttpSecurity,
      * will be redirected to info.jsp by this controller.
+     *
      * @return standard bulk view - info.jsp.
      */
     @GetMapping("/")
@@ -42,6 +43,7 @@ public class UserController {
 
     /**
      * This controller is resp for redirecting to login view.
+     *
      * @return login view - login.jsp.
      */
     @GetMapping("login")
@@ -52,6 +54,7 @@ public class UserController {
     /**
      * Controller for users with USER & ADMIN roles. It gets info about current user from
      * SecurityContextHolder, retrieving Authentication and hence retrieving 'username' from it.
+     *
      * @param model Spring model.
      * @return user view - hello.jsp.
      */
@@ -66,6 +69,7 @@ public class UserController {
 
     /**
      * This controller takes us to admin panel, gets all users from DB and renders them.
+     *
      * @param model Spring model.
      * @return standard starting view for admin - index.jsp.
      */
@@ -78,6 +82,7 @@ public class UserController {
 
     /**
      * Transfer controller to form where we add new user.
+     *
      * @return admin new user form addition view.
      */
     @GetMapping("/admin/add_user_form")
@@ -87,12 +92,13 @@ public class UserController {
 
     /**
      * This controller get meta from user addition form.
+     *
      * @param checkboxValue - array of values retrieved from checkboxes. Can't be not filled, cos exception will be thrown in this case.
-     * @param user user object, pre-filled by @ModelAtt.
+     * @param user          user object, pre-filled by @ModelAtt.
      * @return redirection to admin panel url and from there directly to index.page where changed users info will be rendered.
      */
     @PostMapping("/admin/add_user")
-    public String addUser(@RequestParam("role")String[] checkboxValue, @ModelAttribute User user, Model model) {
+    public String addUser(@RequestParam("role") String[] checkboxValue, @ModelAttribute User user, Model model) {
         if (!udValidator.validate(user)) {
             model.addAttribute("messageEx", "Email is registered already!");
             return "/admin/error";
@@ -107,6 +113,7 @@ public class UserController {
 
     /**
      * Controller that is resp for deletion of the user.
+     *
      * @param user - user - needed to be deleted.
      * @return redirection to admin_panel url and then to index.page with changed DB users info.
      */
@@ -118,6 +125,7 @@ public class UserController {
 
     /**
      * This controller transfers user to update_view.
+     *
      * @param user - pre-filled by @ModelAttribute annotation user object, that is passed to ModelAndVIew object and
      *             further used for pre-filling user update form with existing values.
      * @return MAV object with defined view and object of user to be updated.
@@ -137,9 +145,10 @@ public class UserController {
      * DB and throws exception if it exists in order to prevent duplicate values. So, before validation, we check, if the previous
      * email equals to new email. If they equal - we understand, that user didn't update email and we can skip validation, and in
      * opposite case - we do validation, so that user couldn't use already existing email from DB.
+     *
      * @param checkboxValue - array of checkbox values.
      * @param previousEmail - previously settled user email.
-     * @param user - new user pre-filled by @ModelAtt annotation.
+     * @param user          - new user pre-filled by @ModelAtt annotation.
      * @return redirection to admin panel controller and then to index view with changed DB of users.
      */
     @PostMapping("/admin/update")

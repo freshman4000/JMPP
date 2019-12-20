@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * This interface represents clients service methods.
+ *
  * @param <T> entity Type-parameter.
  * @param <E> entity-id Type-parameter.
  */

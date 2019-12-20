@@ -28,6 +28,7 @@ public class UserJDBCDao implements UserDAO<User, Long> {
         stmt.execute("create table if not exists registered (id bigint auto_increment, password varchar(256), user_id bigint, PRIMARY KEY (id), FOREIGN KEY (user_id) REFERENCES users(id));");
         stmt.close();
     }
+
     @Override
     public List<User> findAllUsers() throws SQLException {
         createTable();
@@ -60,6 +61,7 @@ public class UserJDBCDao implements UserDAO<User, Long> {
         }
         return result;
     }
+
     @Override
     public Long addUser(User user) throws SQLException {
         createTable();
@@ -74,6 +76,7 @@ public class UserJDBCDao implements UserDAO<User, Long> {
         }
         return getMaxId();
     }
+
     @Override
     public void deleteUser(Long userId) throws SQLException {
         createTable();
@@ -85,6 +88,7 @@ public class UserJDBCDao implements UserDAO<User, Long> {
             pst.executeUpdate();
         }
     }
+
     @Override
     public void updateUser(Long userId, User user) throws SQLException {
         createTable();
@@ -104,6 +108,7 @@ public class UserJDBCDao implements UserDAO<User, Long> {
             rst.close();
         }
     }
+
     @Override
     public void setPassword(Long field, String password, User user) throws SQLException {
         createPassTable();
@@ -113,6 +118,7 @@ public class UserJDBCDao implements UserDAO<User, Long> {
             pst.executeUpdate();
         }
     }
+
     @Override
     public void updatePassword(Long field, String password) throws SQLException {
         createPassTable();

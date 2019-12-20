@@ -7,13 +7,52 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5fbfccde-dde4-48c4-876c-62a7333808fb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/admin/add_user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/admin/add_user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/admin/admin_panel.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/admin/admin_panel.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/admin/setPass.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/admin/setPass.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/admin/update_user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/admin/update_user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/info.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/info.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/dao/UserHibernateDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/dao/UserHibernateDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/dao/UserJDBCDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/dao/UserJDBCDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/filters/AdminFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/filters/AdminFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/filters/UserFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/filters/UserFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/interfaces/ClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/interfaces/ClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/interfaces/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/interfaces/UserDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/models/Registration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/models/Registration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/services/HibernateClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/services/HibernateClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/services/JDBCClientService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/services/JDBCClientService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/servlets/LogoutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/servlets/LogoutServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/servlets/RegistrationServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/servlets/RegistrationServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/servlets/SetPassServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/servlets/SetPassServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/utility/DBHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/utility/DBHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/utility/FormGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/java/com/freshamn4000/utility/FormGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/registration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../PP01/src/main/webapp/user/start_page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../PP01/src/main/webapp/user/start_page.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/config/SpringSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/config/SpringSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/config/WebAppInitialiser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/config/WebAppInitialiser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/dao/HibernateUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/dao/HibernateUserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/validators/EmailValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/validators/EmailValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/validators/UDValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/validators/UDValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/service/ClientServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/service/ClientServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/freshman4000/utility/FormGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/freshman4000/utility/FormGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/admin_panel.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/admin_panel.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/error.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/error.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/index.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/registration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/registration.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update_user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/admin/update_user.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/hello.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/hello.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/info.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/info.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/simpleSpringMVC-1.0-SNAPSHOT/WEB-INF/info.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/simpleSpringMVC-1.0-SNAPSHOT/WEB-INF/info.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/simpleSpringMVC-1.0-SNAPSHOT/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/simpleSpringMVC-1.0-SNAPSHOT/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,30 +71,7 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db_example@localhost" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db_example@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db_example@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="db_example: schema" type="76f4a085:MysqlImplModel$Schema" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="db_example@localhost" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="db_example: schema" type="76f4a085:MysqlImplModel$Schema" />
-        <item name="Role: table" type="285a2a93:MysqlImplModel$Table" />
-      </path>
-    </expand>
+    <expand />
     <select />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -92,7 +108,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -309,7 +325,11 @@
       <workItem from="1576246380371" duration="9816000" />
       <workItem from="1576261771029" duration="15138000" />
       <workItem from="1576279587917" duration="682000" />
-      <workItem from="1576572847595" duration="56166000" />
+      <workItem from="1576572847595" duration="57899000" />
+      <workItem from="1576749581275" duration="1743000" />
+      <workItem from="1576754311027" duration="1074000" />
+      <workItem from="1576781441791" duration="1856000" />
+      <workItem from="1576835088878" duration="656000" />
     </task>
     <servers />
   </component>

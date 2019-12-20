@@ -8,6 +8,7 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
         }
+
         /* Navbar Styling */
         .navbar {
             list-style: none;
@@ -17,26 +18,32 @@
             border-radius: 5px;
             overflow: auto;
         }
+
         .navbar li {
             float: left;
         }
+
         .navbar li a {
             display: block;
             color: #fff;
             text-decoration: none;
             padding: 15px 20px;
         }
+
         .navbar li a:hover {
             background: #446190;
             color: #f4f4f4;
         }
+
         * {
             margin: 0;
             padding: 0;
         }
+
         .fields form {
             margin: 15px 15px;
         }
+
         .fields input {
             margin: 5px 0px;
             width: 100%;

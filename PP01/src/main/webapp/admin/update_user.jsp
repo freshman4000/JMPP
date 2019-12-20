@@ -9,15 +9,18 @@
             margin: 0;
             padding: 0;
         }
+
         .fields {
             background: #f4f4f4;
             width: 200px;
             margin-top: 20px;
             margin-left: 30px;
         }
+
         .fields form {
             margin: 15px 15px;
         }
+
         .fields input {
             margin: 5px 0px;
             width: 100%;
@@ -25,6 +28,7 @@
             border: none;
             border-radius: 5px;
         }
+
         #button, #button1 {
             background: #4c6ca0;;
             color: #fff;
@@ -34,13 +38,16 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         #button:hover, #button1:hover {
             background: #446190;
         }
+
         #role {
             background: #4c6ca0;;
             color: #fff;
         }
+
         .label {
             color: red;
         }
@@ -57,11 +64,11 @@
         Email: <br><input type="email" name="email" placeholder="<%=request.getParameter("email")%>"> <br>
         Birthdate: <br><input type="date" name="birthdate" placeholder="<%=request.getParameter("birthdate")%>"> <br>
         Phone number: <br><input type="tel" name="phone" pattern="\+[0-9][0-9]{10}"
-                                    placeholder="<%=request.getParameter("phone")%>"> <br>
-        <label for="role" class="label">Role:</label> <br>  <select name="role" id="role">
-                <option value="user" selected>User</option>
-                <option value="admin">Admin</option>
-                    </select> <br>
+                                 placeholder="<%=request.getParameter("phone")%>"> <br>
+        <label for="role" class="label">Role:</label> <br> <select name="role" id="role">
+        <option value="user" selected>User</option>
+        <option value="admin">Admin</option>
+    </select> <br>
         <input id="button" type="submit" value="Update user">
     </form>
     <form action="/admin/admin_panel.jsp" method="POST">

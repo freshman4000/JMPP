@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User data</title>
+    <link th:href="@{/css/custom.css}" rel="stylesheet" media="screen">
+    <style>
+    </style>
+</head>
+<body>
+<div id="inline" th:fragment="delete">
+    <form id="frag" action="/admin/delete" method="POST">
+        <input type="hidden" name="id" th:value="${user.id}"/>
+        <input type="submit" value="delete">
+    </form>
+</div>
+</body>
+</html>

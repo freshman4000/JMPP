@@ -44,7 +44,7 @@ public class HibernateClientService implements ClientService<User, Long> {
 
     public Long addUser(User user) {
         HibernateClientService.getInstance();
-      return new UserHibernateDAO(sessionFactory.openSession()).addUser(user);
+        return new UserHibernateDAO(sessionFactory.openSession()).addUser(user);
     }
 
     public void deleteUser(Long userId) {
@@ -59,12 +59,12 @@ public class HibernateClientService implements ClientService<User, Long> {
 
     @Override
     public void setPassword(Long field, String password, User user) throws SQLException {
-    new UserHibernateDAO(sessionFactory.openSession()).setPassword(field, password, user);
+        new UserHibernateDAO(sessionFactory.openSession()).setPassword(field, password, user);
     }
 
     @Override
     public void updatePassword(Long field, String password) throws SQLException {
-    new UserHibernateDAO(sessionFactory.openSession()).updatePassword(field, password);
+        new UserHibernateDAO(sessionFactory.openSession()).updatePassword(field, password);
     }
 
     @Override

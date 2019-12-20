@@ -35,6 +35,6 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public User getUserByUserName(String username) {
-       return userDAO.getUserByUserName(username);
+        return userDAO.getUserByUserName(username);
     }
 }

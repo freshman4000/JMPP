@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.PostConstruct;
 import java.util.Arrays;
 import java.util.List;
+
 @Repository
 @Transactional
 public class HibernateUserDAO implements UserDAO {
@@ -31,8 +32,8 @@ public class HibernateUserDAO implements UserDAO {
     public void initAdmin() {
         Session session = sessionFactory.openSession();
         Transaction tx = session.beginTransaction();
-        User admin = new User("admin", "admin", "admin@admin.com", "2000-01-01", "+70000000000", Arrays.asList( new Role("USER"), new Role("ADMIN")), "rootroot");
-        User user = new User("user", "user", "user@user.com", "2000-01-01", "+70000000000", Arrays.asList( new Role("USER")), "rootroot");
+        User admin = new User("admin", "admin", "admin@admin.com", "2000-01-01", "+70000000000", Arrays.asList(new Role("USER"), new Role("ADMIN")), "rootroot");
+        User user = new User("user", "user", "user@user.com", "2000-01-01", "+70000000000", Arrays.asList(new Role("USER")), "rootroot");
         admin.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         session.save(admin);

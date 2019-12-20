@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User data</title>
+    <link th:href="@{/css/custom.css}" rel="stylesheet" media="screen">
+    <style>
+    </style>
+</head>
+<body>
+<ul class="navbar">
+    <div th:replace="/fragments/gobackbutton :: goback">
+    </div>
+    <div th:replace="/fragments/logoutbutton :: logout">
+    </div>
+</ul>
+<section class="fields">
+    <form action="/admin/update" method="POST">
+        <input type="hidden" name="id" th:value="${user.id}">
+        Firstname: <br><input id="f1" type="text" name="firstname" th:value="${user.firstname}"> <br>
+        Lastname: <br><input id="f1" type="text" name="lastname" th:value="${user.lastname}"> <br>
+        Email: <br><input id="f1" type="email" name="email" th:value="${user.email}"> <br>
+        Birthdate: <br><input id="f1" type="date" name="birthdate" th:value="${user.birthdate}"> <br>
+        Phone number: <br><input id="f1" type="tel" name="phone" pattern="\+[0-9][0-9]{10}"
+                                 th:value="${user.phone}"> <br>
+        <label class="label">Role:</label> <br>
+        <input class="role" type="checkbox" name="role" value="USER" checked> User
+        <input class="role" type="checkbox" name="role" value="ADMIN"> Admin
+        <br>
+        Password: <br><input id="f1" type="password" name="password" pattern="[A-Za-z0-9$.]{8,}"
+                             placeholder="leave blank to save previous password"> <br>
+        <input type="hidden" name="previousEmail" th:value="${user.email}">
+        <input type="hidden" name="previousPass" th:value="${user.password}">
+        <input id="button" type="submit" value="Update user">
+    </form>
+    <form action="/admin/admin_panel" method="POST">
+        <input id="button1" type="submit" value="Go back">
+    </form>
+</section>
+</body>
+</html>

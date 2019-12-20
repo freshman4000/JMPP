@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; ISO-8859-1"
-         pageEncoding="ISO-8859-1" isELIgnored="false"%>
+         pageEncoding="ISO-8859-1" isELIgnored="false" %>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,33 +16,40 @@
             border-radius: 5px;
             overflow: auto;
         }
+
         .navbar li {
             float: left;
         }
+
         .navbar li a {
             display: block;
             color: #fff;
             text-decoration: none;
             padding: 15px 20px;
         }
+
         .navbar li a:hover {
             background: #446190;
             color: #f4f4f4;
         }
+
         * {
             margin: 0;
             padding: 0;
         }
+
         .fields {
             background: #f4f4f4;
             width: 200px;
             margin-top: 20px;
             margin-left: 30px;
         }
+
         .fields form {
             font-size: 17px;
             margin: 15px 15px;
         }
+
         .fields #f1 {
             margin: 5px 0px;
             width: 100%;
@@ -50,6 +57,7 @@
             border: none;
             border-radius: 5px;
         }
+
         #button, #button1 {
             background: #4c6ca0;;
             color: #fff;
@@ -59,15 +67,18 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         #button:hover, #button1:hover {
             background: #446190;
         }
+
         .role {
             display: inline;
             width: 20%;
             background: #4c6ca0;;
             color: #fff;
         }
+
         .label {
             color: red;
         }
@@ -88,7 +99,7 @@
         Email: <br><input id="f1" type="email" name="email" value=${user.email}> <br>
         Birthdate: <br><input id="f1" type="date" name="birthdate" value=${user.birthdate}> <br>
         Phone number: <br><input id="f1" type="tel" name="phone" pattern="\+[0-9][0-9]{10}"
-                                    value=${user.phone}> <br>
+                                 value=${user.phone}> <br>
         <label class="label">Role:</label> <br>
         <input class="role" type="checkbox" name="role" value="USER" checked> User
         <input class="role" type="checkbox" name="role" value="ADMIN"> Admin

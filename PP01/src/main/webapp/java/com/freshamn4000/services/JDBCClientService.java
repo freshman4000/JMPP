@@ -34,7 +34,7 @@ public class JDBCClientService implements ClientService<User, Long> {
 
     @Override
     public Long addUser(User entity) throws SQLException {
-      return new UserJDBCDao(connection).addUser(entity);
+        return new UserJDBCDao(connection).addUser(entity);
     }
 
     @Override

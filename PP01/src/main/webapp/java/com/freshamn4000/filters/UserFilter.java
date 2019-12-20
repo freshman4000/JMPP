@@ -10,9 +10,9 @@ import java.io.IOException;
 public class UserFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest req = (HttpServletRequest)servletRequest;
+        HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse res = (HttpServletResponse) servletResponse;
-        String role = (String)req.getSession().getAttribute("role");
+        String role = (String) req.getSession().getAttribute("role");
         if (role != null && (role.equals("user") || role.equals("admin"))) {
             filterChain.doFilter(req, res);
         } else {
