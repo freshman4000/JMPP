@@ -45,6 +45,14 @@ body {
     margin: 15px 15px;
 }
 
+.fields form input:focus {
+    outline: none;
+    border-color: #446190;
+}
+.fields form input:hover {
+    border-color: #446190;
+}
+
 .fields #f1 {
     margin: 5px 0px;
     width: 100%;

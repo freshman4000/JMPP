@@ -1,21 +1,12 @@
 package com.freshman4000.dao;
 
-import com.freshman4000.model.Role;
 import com.freshman4000.model.User;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
-
-import javax.annotation.PostConstruct;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
-import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -43,8 +34,8 @@ public class HibernateUserDAO implements UserDAO {
     }
 
     @Override
-    public void deleteUser(User user) {
-        entityManager.remove(entityManager.contains(user) ? user : entityManager.merge(user));
+    public void deleteUser(Long id) {
+        entityManager.createQuery("DELETE from User u WHERE u.id = :idParam").setParameter("idParam", id).executeUpdate();
     }
 
     @Override

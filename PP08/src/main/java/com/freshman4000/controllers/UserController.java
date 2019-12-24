@@ -30,7 +30,7 @@ public class UserController {
      *
      * @return standard bulk view - info.jsp.
      */
-    @GetMapping("/")
+    @GetMapping({"/","/info"})
     public String rootPage() {
         return "info";
     }
@@ -70,7 +70,7 @@ public class UserController {
     @GetMapping("/admin/admin_panel")
     public String goToIndexPage(Model model) {
         model.addAttribute("users", clientService.showAllUsers());
-        return "admin/index";
+        return "admin/admin_panel";
     }
 
     /**
@@ -80,7 +80,7 @@ public class UserController {
      */
     @GetMapping("/admin/add_user_form")
     public String addUserForm() {
-        return "admin/registration";
+        return "admin/add_new_user";
     }
 
     /**
@@ -110,9 +110,9 @@ public class UserController {
      * @param user - user - needed to be deleted.
      * @return redirection to admin_panel url and then to index.page with changed DB users info.
      */
-    @PostMapping("/admin/delete")
-    public String deleteUser(@ModelAttribute User user) {
-        clientService.deleteUser(user);
+    @GetMapping("/admin/delete/{id}")
+    public String deleteUser(@PathVariable Long id) {
+        clientService.deleteUser(id);
         return "redirect:/admin/admin_panel";
     }
 
@@ -126,24 +126,11 @@ public class UserController {
     @GetMapping("/admin/update_user_form")
     public ModelAndView updateUserForm(@ModelAttribute User user) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("/admin/update_user");
+        mv.setViewName("/admin/admin_panel");
         mv.addObject(user);
         return mv;
     }
 
-    /**
-     * This controller retrieves checkbox values via forming array of strings. It also retrieves previous email param
-     * in sake of validation logic, and, finally, forms updated user object, using @ModelAttribute annotation. The tricky thing is
-     * that when we want to update existing user email via using udValidator for email validation - - it checks for email value in
-     * DB and throws exception if it exists in order to prevent duplicate values. So, before validation, we check, if the previous
-     * email equals to new email. If they equal - we understand, that user didn't update email and we can skip validation, and in
-     * opposite case - we do validation, so that user couldn't use already existing email from DB.
-     *
-     * @param checkboxValue - array of checkbox values.
-     * @param previousEmail - previously settled user email.
-     * @param user          - new user pre-filled by @ModelAtt annotation.
-     * @return redirection to admin panel controller and then to index view with changed DB of users.
-     */
     @PostMapping("/admin/update")
     public String updateUser(@RequestParam("role") String[] checkboxValue,
                              @RequestParam("previousEmail") String previousEmail,

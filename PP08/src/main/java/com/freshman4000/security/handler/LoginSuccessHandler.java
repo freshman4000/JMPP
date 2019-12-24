@@ -1,4 +1,4 @@
-package com.freshman4000.config.handler;
+package com.freshman4000.security.handler;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;

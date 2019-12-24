@@ -25,8 +25,8 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void deleteUser(User user) {
-        userDAO.deleteUser(user);
+    public void deleteUser(Long id) {
+        userDAO.deleteUser(id);
     }
 
     @Override

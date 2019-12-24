@@ -1,6 +1,6 @@
-package com.freshman4000.config;
+package com.freshman4000.security;
 
-import com.freshman4000.config.handler.LoginSuccessHandler;
+import com.freshman4000.security.handler.LoginSuccessHandler;
 import com.freshman4000.model.User;
 import com.freshman4000.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
