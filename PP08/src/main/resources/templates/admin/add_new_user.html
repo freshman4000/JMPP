@@ -49,39 +49,39 @@
                 <span class="font-weight-bold pl-4">Add new user</span>
             </div>
             <div class="d-flex justify-content-center align-items-center container bg-white">
-                <form action="/admin/add_user" method="POST" class="form-group">
+                <form id="additionForm" action="/api/admin/add_user" method="POST" class="form-group">
                     <div class="group-item"><span class="ml-5 font-weight-bold">First name</span>
-                        <input type="text" class="form-control" name="firstname" required>
+                        <input id="firstname" type="text" class="form-control" name="firstname" required>
                     </div>
                     <div class="group-item"><span class="ml-5 font-weight-bold">Lastname</span>
-                        <input type="text" class="form-control" name="lastname" required>
+                        <input id="lastname" type="text" class="form-control" name="lastname" required>
                     </div>
                     <div class="group-item"><span class="ml-5 font-weight-bold">Email</span>
-                        <input type="email" class="form-control" name="email" required>
+                        <input id="email" type="email" class="form-control" name="email" required>
                     </div>
                     <div class="group-item"><span class="ml-5 font-weight-bold">Birthdate</span>
-                        <input type="date" class="form-control" name="birthdate" required>
+                        <input id="birthdate" type="date" class="form-control" name="birthdate" required>
                     </div>
                     <div class="group-item"><span class="ml-5 font-weight-bold">Phone</span>
-                        <input type="text" class="form-control" name="phone" pattern="\+[0-9][0-9]{10}" required>
+                        <input id="phone" type="text" class="form-control" name="phone" pattern="\+[0-9][0-9]{10}" required>
                     </div>
                     <div class="group-item">
                         <span class="ml-5 font-weight-bold">Role</span>
                         <div class="form-control form-checkbox">
-                            <input type="checkbox" class="form-control-input" name="role" value="ADMIN">
+                            <input id="role" type="checkbox" class="form-control-input" name="role" value="ADMIN">
                             <label class="form-control-label">ADMIN</label>
                         </div>
                         <div class="form-control form-checkbox">
-                            <input type="checkbox" class="form-control-input" name="role" value="USER">
+                            <input id="role1" type="checkbox" class="form-control-input" name="role" value="USER">
                             <label class="form-control-label">USER</label>
                         </div>
                     </div>
                     <div class="group-item mb-2"><span class="ml-5 font-weight-bold">Password</span>
-                        <input type="password" class="form-control" name="password" pattern="[A-Za-z0-9$.]{8,}"
+                        <input id="password" type="password" class="form-control" name="password" pattern="[A-Za-z0-9$.]{8,}"
                                required placeholder="Text/numbers 8+ chars">
                     </div>
                     <div class="form-group-item">
-                        <button class="btn btn-success btn-block" type="sublmit" value="Add new user">Add new user
+                        <button id="btn-save" class="btn btn-success btn-block" onclick="subform()" type="submit" value="Add new user">Add new user
                         </button>
                     </div>
 
@@ -103,5 +103,62 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    function adminPanel() {
+        $.ajax({
+            url : 'http://localhost:8080/api/admin/show_all_users',
+            type : 'GET',
+            dataType: 'json',
+            success : function(list) {
+                $.each(list, function (i) {
+                    $("#div3").append("<tr>" +
+                        "<td>" + list[i].id + "</td>" +
+                        "<td id='rl'>" + list[i].roles[0].name + "</td>" +
+                        "<td>" + list[i].firstname + "</td>" +
+                        "<td>" + list[i].lastname + "</td>" +
+                        "<td>" + list[i].email + "</td>" +
+                        "<td>" + list[i].birthdate + "</td>" +
+                        "<td>" + list[i].phone + "</td>" +
+                        "<td>" +
+                        "<button class='btn btn-sm btn-info'>" +
+                        'edit' +
+                        "</button>" + "</td>" +
+                        "<td>" +
+                        "<button class='btn btn-sm btn-outline-danger' onclick='deleteUser(" + list[i].id + ")'>" +
+                        'delete' +
+                        "</button>" + "</td>" +
+                        "</tr>");
+                    if (list[i].roles.length > 1) {
+                        $("#rl").append(', ' + list[i].roles[1].name);
+                    }
+                })
+
+            }
+        });
+
+    }
+</script>
+<script>
+        function subform() {
+
+                var data = {}
+                data["firstname"] = $("#firstname").val();
+                data["lastname"] = $("#lastname").val();
+                data["email"] = $("#email").val();
+                data["birthdate"] = $("#birthdate").val();
+                data["phone"] = $("#phone").val();
+                data["role"] = [$("#role").val(), $("#role1").val()];
+                data["password"] = $("#password").val;
+
+                $.ajax({
+                    type: "POST",
+                    url: "http://localhost:8080/api/admin/add_user",
+                    data: JSON.stringify(data),
+                    dataType: 'json',
+                    timeout: 6000
+                });
+        }
+</script>
 </body>
 </html>

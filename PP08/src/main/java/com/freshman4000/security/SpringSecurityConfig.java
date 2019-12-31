@@ -68,7 +68,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 //страницы аутентификаци доступна всем
                 .antMatchers("/login").anonymous()
-                .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
+                .antMatchers("/admin/**", "/api/**").hasAnyAuthority("ADMIN")
                 // защищенные URL
                 .antMatchers("/hello").access("hasAnyAuthority('ADMIN', 'USER')").anyRequest().authenticated();
     }

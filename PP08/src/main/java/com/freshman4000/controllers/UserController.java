@@ -67,16 +67,25 @@ public class UserController {
      * @param model Spring model.
      * @return standard starting view for admin - index.jsp.
      */
-    @GetMapping("/admin/admin_panel")
-    public String goToIndexPage(Model model) {
-        model.addAttribute("users", clientService.showAllUsers());
-        return "admin/admin_panel";
-    }
+//    @GetMapping("/admin/admin_panel")
+//    public String goToIndexPage(Model model) {
+//        model.addAttribute("users", clientService.showAllUsers());
+//        return "admin/admin_panel";
+//    }
 
     /**
-     * Transfer controller to form where we add new user.
+     * This controller is rooting to admin panel view.
      *
-     * @return admin new user form addition view.
+     * @return standard starting view for admin - index.jsp.
+     */
+    @GetMapping("/admin/admin_panel")
+    public String goToIndexPage() {
+        return "admin/admin_panel";
+    }
+    /**
+     * View controller to form where new user is added.
+     *
+     * @return new user addition view.
      */
     @GetMapping("/admin/add_user_form")
     public String addUserForm() {
@@ -84,7 +93,7 @@ public class UserController {
     }
 
     /**
-     * This controller get meta from user addition form.
+     * This controller gets meta from user addition form.
      *
      * @param checkboxValue - array of values retrieved from checkboxes. Can't be not filled, cos exception will be thrown in this case.
      * @param user          user object, pre-filled by @ModelAtt.
@@ -102,18 +111,6 @@ public class UserController {
             clientService.addUser(user);
             return "redirect:/admin/admin_panel";
         }
-    }
-
-    /**
-     * Controller that is resp for deletion of the user.
-     *
-     * @param user - user - needed to be deleted.
-     * @return redirection to admin_panel url and then to index.page with changed DB users info.
-     */
-    @GetMapping("/admin/delete/{id}")
-    public String deleteUser(@PathVariable Long id) {
-        clientService.deleteUser(id);
-        return "redirect:/admin/admin_panel";
     }
 
     /**
