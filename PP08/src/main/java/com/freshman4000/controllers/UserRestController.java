@@ -32,7 +32,6 @@ public class UserRestController {
     }
     @PostMapping("/api/admin/add_user")
     public void addUser(@RequestBody User user) {
-        System.out.println(user);
             clientService.addUser(user);
         }
     }

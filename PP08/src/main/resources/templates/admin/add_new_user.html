@@ -81,7 +81,7 @@
                                required placeholder="Text/numbers 8+ chars">
                     </div>
                     <div class="form-group-item">
-                        <button id="btn-save" class="btn btn-success btn-block" onclick="subform()" type="submit" value="Add new user">Add new user
+                        <button id="btn-save" class="btn btn-success btn-block" type="submit" value="Add new user">Add new user
                         </button>
                     </div>
 
@@ -140,6 +140,7 @@
     }
 </script>
 <script>
+    $('#btn-save').click(
         function subform() {
 
                 var data = {}
@@ -151,14 +152,15 @@
                 data["role"] = [$("#role").val(), $("#role1").val()];
                 data["password"] = $("#password").val;
 
-                $.ajax({
-                    type: "POST",
-                    url: "http://localhost:8080/api/admin/add_user",
-                    data: JSON.stringify(data),
-                    dataType: 'json',
-                    timeout: 6000
-                });
-        }
+                // $.ajax({
+                //     type: "POST",
+                //     url: "http://localhost:8080/api/admin/add_user",
+                //     data: JSON.stringify(data),
+                //     dataType: 'json',
+                //     timeout: 6000
+                // });
+        });
+    adminPanel();
 </script>
 </body>
 </html>
