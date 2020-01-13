@@ -27,7 +27,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-2 mt-3">
-            <div class="row d.block bg-white" th:if="${user.roles.get(0).getName().equals('ADMIN') || (user.roles.size() == 2 && user.roles.get(1).getName().equals('ADMIN'))}">
+            <div class="row d.block bg-white" th:if="${list.get(0).getName().equals('ADMIN') || (list.size() == 2 && list.get(1).getName().equals('ADMIN'))}">
                 <a class="text-info py-2 pl-4" href="/admin/admin_panel">Admin</a></div>
             <div class="row d.block bg-info"><a class="text-white py-2 pl-4" href="#">User</a></div>
         </div>

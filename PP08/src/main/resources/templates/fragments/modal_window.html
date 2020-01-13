@@ -16,32 +16,32 @@
 <body>
 <div id="inline" th:fragment="update">
     <div class="modal fade mt-1 pt-1" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
-         aria-hidden="true" th:attrappend="id=${user.id}, aria-labelledby=${user.id}">
+         aria-hidden="true" th:attrappend="id=${list[i].id}, aria-labelledby=${list[i].id}">
         <div class="modal-dialog mt-1 pt-1" role="document">
             <div class="modal-content mt-1 pt-1">
                 <div class="modal-body mt-0 pt-1">
                     <form action="/admin/update" method="POST" class="form-group mt-0 pt-1">
                         <div class="group-item "><span class="font-weight-bold">ID</span>
-                            <input type="text" class="form-control" name="id" readonly required th:value="${user.id}">
+                            <input type="text" class="form-control" name="id" readonly required th:value="${list[i].id}">
                         </div>
                         <div class="group-item "><span class="font-weight-bold">First name</span>
                             <input type="text" class="form-control" name="firstname" required
-                                   th:value="${user.firstname}">
+                                   th:value="${list[i].firstname}">
                         </div>
                         <div class="group-item"><span class="font-weight-bold">Lastname</span>
                             <input type="text" class="form-control" name="lastname" required
-                                   th:value="${user.lastname}">
+                                   th:value="${list[i].lastname}">
                         </div>
                         <div class="group-item"><span class="font-weight-bold">Email</span>
-                            <input type="email" class="form-control" name="email" required th:value="${user.email}">
+                            <input type="email" class="form-control" name="email" required th:value="${list[i].email}">
                         </div>
                         <div class="group-item"><span class="font-weight-bold">Birthdate</span>
                             <input type="date" class="form-control" name="birthdate" required
-                                   th:value="${user.birthdate}">
+                                   th:value="${list[i].birthdate}">
                         </div>
                         <div class="group-item"><span class="font-weight-bold">Phone</span>
                             <input type="text" class="form-control" name="phone" pattern="\+[0-9][0-9]{10}" required
-                                   th:value="${user.phone}">
+                                   th:value="${list[i].phone}">
                         </div>
                         <div class="group-item">
                             <span class="font-weight-bold">Role</span>
@@ -58,8 +58,8 @@
                             <input type="password" class="form-control" name="password" pattern="[A-Za-z0-9$.]{8,}"
                                    placeholder="Leave blank for no change">
                         </div>
-                        <input type="hidden" name="previousEmail" th:value="${user.email}">
-                        <input type="hidden" name="previousPass" th:value="${user.password}">
+                        <input type="hidden" name="previousEmail" th:value="${list[i].email}">
+                        <input type="hidden" name="previousPass" th:value="${list[i].password}">
                         <div class="modal-footer mt-0 pt-2">
                             <button type="button" class="btn btn-outline-info" data-dismiss="modal">Close</button>
                             <button type="submit" class="form-group-item btn btn-info">Update user</button>

@@ -7,7 +7,8 @@
     <link rel="shortcut icon" type="image/x-icon" href="/img/favicon-ca31b78daf0dd9a106bbf3c6d87d4ec7.png" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <!-- jQuery Modal -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <title>Admin panel</title>
     <style>
     </style>
@@ -50,7 +51,6 @@
                 <span class="font-weight-bold pl-4">All users</span>
             </div>
             <div class="container-fluid border bg-white" id="wind">
-
                 <table class="table table-block bg-white table-hover table-striped mx-auto">
                     <thead>
                     <tr>
@@ -80,47 +80,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script>
-    function deleteUser(id) {
-        $.ajax({url: 'http://localhost:8080/api/admin/delete/' + id, method: 'POST'});
-        location.reload();
-    }
-</script>
-<script>
-    function adminPanel() {
-        $.ajax({
-            url : 'http://localhost:8080/api/admin/show_all_users',
-            type : 'GET',
-            dataType: 'json',
-            success : function(list) {
-                $.each(list, function (i) {
-                    $("#div3").append("<tr>" +
-                        "<td>" + list[i].id + "</td>" +
-                        "<td id='rl'>" + list[i].roles[0].name + "</td>" +
-                        "<td>" + list[i].firstname + "</td>" +
-                        "<td>" + list[i].lastname + "</td>" +
-                        "<td>" + list[i].email + "</td>" +
-                        "<td>" + list[i].birthdate + "</td>" +
-                        "<td>" + list[i].phone + "</td>" +
-                        "<td>" +
-                        "<button class='btn btn-sm btn-info'>" +
-                        'edit' +
-                        "</button>" + "</td>" +
-                        "<td>" +
-                        "<button class='btn btn-sm btn-outline-danger' onclick='deleteUser(" + list[i].id + ")'>" +
-                        'delete' +
-                        "</button>" + "</td>" +
-                        "</tr>");
-                    if (list[i].roles.length > 1) {
-                        $("#rl").append(', ' + list[i].roles[1].name);
-                    }
-                })
-
-            }
-        });
-
-    }
-</script>
+<!-- jQuery Modal -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<script src="/js/admin.js"></script>
 <script>
     $(document).ready(adminPanel());
 </script>

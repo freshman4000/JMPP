@@ -2,10 +2,8 @@ package com.freshman4000.model;
 
 import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Role implements GrantedAuthority {
@@ -13,6 +11,8 @@ public class Role implements GrantedAuthority {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    @ManyToMany(mappedBy = "roles", cascade = {CascadeType.ALL})
+    private Set<User> users;
 
     public Role() {
     }

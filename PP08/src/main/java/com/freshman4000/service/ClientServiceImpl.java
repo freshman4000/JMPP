@@ -1,12 +1,14 @@
 package com.freshman4000.service;
 
 import com.freshman4000.dao.UserDAO;
+import com.freshman4000.model.Role;
 import com.freshman4000.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -37,5 +39,10 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public User getUserByUserName(String username) {
         return userDAO.getUserByUserName(username);
+    }
+
+    @Override
+    public Set<Role> getRoles() {
+        return userDAO.getRoles();
     }
 }

@@ -11,9 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
+import java.util.*;
 
 @Controller
 @RequestMapping("/")
@@ -57,6 +56,8 @@ public class UserController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
         User user = clientService.getUserByUserName(currentPrincipalName);
+        List<Role> list = new ArrayList<>(user.getRoles());
+        model.addAttribute("list", list);
         model.addAttribute("user", user);
         return "hello";
     }
@@ -99,19 +100,19 @@ public class UserController {
      * @param user          user object, pre-filled by @ModelAtt.
      * @return redirection to admin panel url and from there directly to index.page where changed users info will be rendered.
      */
-    @PostMapping("/admin/add_user")
-    public String addUser(@RequestParam("role") String[] checkboxValue, @ModelAttribute User user, Model model) {
-        if (!udValidator.validate(user)) {
-            model.addAttribute("messageEx", "Email is registered already!");
-            return "/admin/error";
-        } else {
-            List<Role> userRoles = new ArrayList<>();
-            Arrays.stream(checkboxValue).forEach(x -> userRoles.add(new Role(x)));
-            user.setRoles(userRoles);
-            clientService.addUser(user);
-            return "redirect:/admin/admin_panel";
-        }
-    }
+//    @PostMapping("/admin/add_user")
+//    public String addUser(@RequestParam("role") String[] checkboxValue, @ModelAttribute User user, Model model) {
+//        if (!udValidator.validate(user)) {
+//            model.addAttribute("messageEx", "Email is registered already!");
+//            return "/admin/error";
+//        } else {
+//            List<Role> userRoles = new ArrayList<>();
+//            Arrays.stream(checkboxValue).forEach(x -> userRoles.add(new Role(x)));
+//            user.setRoles(userRoles);
+//            clientService.addUser(user);
+//            return "redirect:/admin/admin_panel";
+//        }
+//    }
 
     /**
      * This controller transfers user to update_view.
@@ -128,28 +129,28 @@ public class UserController {
         return mv;
     }
 
-    @PostMapping("/admin/update")
-    public String updateUser(@RequestParam("role") String[] checkboxValue,
-                             @RequestParam("previousEmail") String previousEmail,
-                             @RequestParam("previousPass") String previousPass,
-                             @ModelAttribute User user,
-                             Model model) {
-        boolean validated = true;
-        if (!previousEmail.equals(user.getEmail())) {
-            validated = udValidator.validate(user);
-        }
-        if (validated) {
-            List<Role> userRoles = new ArrayList<>();
-            Arrays.stream(checkboxValue).forEach(x -> userRoles.add(new Role(x)));
-            user.setRoles(userRoles);
-            if (user.getPassword().equals("")) {
-                user.setPassword(previousPass.concat("same"));
-            }
-            clientService.updateUser(user);
-            return "redirect:/admin/admin_panel";
-        } else {
-            model.addAttribute("messageEx", "Email is registered already!");
-            return "/admin/error";
-        }
-    }
+//    @PostMapping("/admin/update")
+//    public String updateUser(@RequestParam("role") String[] checkboxValue,
+//                             @RequestParam("previousEmail") String previousEmail,
+//                             @RequestParam("previousPass") String previousPass,
+//                             @ModelAttribute User user,
+//                             Model model) {
+//        boolean validated = true;
+//        if (!previousEmail.equals(user.getEmail())) {
+//            validated = udValidator.validate(user);
+//        }
+//        if (validated) {
+//            List<Role> userRoles = new ArrayList<>();
+//            Arrays.stream(checkboxValue).forEach(x -> userRoles.add(new Role(x)));
+//            user.setRoles(userRoles);
+//            if (user.getPassword().equals("")) {
+//                user.setPassword(previousPass.concat("same"));
+//            }
+//            clientService.updateUser(user);
+//            return "redirect:/admin/admin_panel";
+//        } else {
+//            model.addAttribute("messageEx", "Email is registered already!");
+//            return "/admin/error";
+//        }
+//    }
 }

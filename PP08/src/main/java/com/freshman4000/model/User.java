@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -25,15 +26,16 @@ public class User implements UserDetails {
     @Column
     private String phone;
     @Column
-    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, orphanRemoval = true)
-    private List<Role> roles;
+    @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "roles_id"))
+    private Set<Role> roles;
     @Column
     private String password;
 
     public User() {
     }
 
-    public User(String firstname, String lastname, String email, String birthdate, String phone, List<Role> roles, String password) {
+    public User(String firstname, String lastname, String email, String birthdate, String phone, Set<Role> roles, String password) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.email = email;
@@ -43,7 +45,7 @@ public class User implements UserDetails {
         this.password = password;
     }
 
-    public User(Long id, String firstname, String lastname, String email, String birthdate, String phone, List<Role> roles, String password) {
+    public User(Long id, String firstname, String lastname, String email, String birthdate, String phone, Set<Role> roles, String password) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -127,11 +129,11 @@ public class User implements UserDetails {
         this.phone = phone;
     }
 
-    public List<Role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(List<Role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 
