@@ -26,7 +26,7 @@ public class User implements UserDetails {
     @Column
     private String phone;
     @Column
-    @ManyToMany(cascade = {CascadeType.ALL},fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.PERSIST},fetch = FetchType.EAGER)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "roles_id"))
     private Set<Role> roles;
     @Column
@@ -148,11 +148,5 @@ public class User implements UserDetails {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("User: " +
-                "id<span id=\"ufi\">%s</span> name<span id=\"ufi\">%s</span> last name<span id=\"ufi\">%s</span> email<span id=\"ufi\">%s</span> birth date<span id=\"ufi\">%s</span> phoneNumber<span id=\"ufi\">%s</span> role<span id=\"ufi\">%s</span>", id, firstname, lastname, email, birthdate, phone, roles);
     }
 }

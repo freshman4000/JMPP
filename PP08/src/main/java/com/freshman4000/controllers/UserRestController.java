@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -26,10 +27,16 @@ public class UserRestController {
     public List<User> getAllUsers() {
         return clientService.showAllUsers();
     }
+    @GetMapping("/api/admin/get_roles")
+    public List<Role> getRoles() {
+        return new ArrayList<>(clientService.getRoles());
+    }
 
     @PostMapping("/api/admin/delete/{id}")
-    public void deleteUser(@PathVariable Long id) {
+    public ResponseEntity<HttpStatus> deleteUser(@PathVariable Long id) {
+
         clientService.deleteUser(id);
+        return new ResponseEntity<HttpStatus>(HttpStatus.ACCEPTED);
     }
 
     @PostMapping(value = "/api/admin/add_user")

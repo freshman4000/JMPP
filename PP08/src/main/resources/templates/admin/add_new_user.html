@@ -43,7 +43,7 @@
                     </li>
                 </ul>
             </nav>
-            <div class="border rounded-top py-2">
+            <div class="border rounded-top py-2" id = "message">
                 <span class="font-weight-bold pl-4">Add new user</span>
             </div>
             <div class="d-flex justify-content-center align-items-center container bg-white" id="uad">
@@ -65,13 +65,11 @@
                     </div>
                     <div class="group-item">
                         <span class="ml-5 font-weight-bold">Role</span>
+                        <div id="roleList">
                         <div class="form-control form-checkbox">
-                            <input id="role" type="checkbox" class="form-control-input" name="role" value="ADMIN" checked>
-                            <label class="form-control-label">ADMIN</label>
-                        </div>
-                        <div class="form-control form-checkbox">
-                            <input id="role1" type="checkbox" class="form-control-input" name="role" value="USER" checked>
-                            <label class="form-control-label">USER</label>
+
+                            /* adding roles here by ajax*/
+
                         </div>
                     </div>
                     <div class="group-item mb-2"><span class="ml-5 font-weight-bold">Password</span>
@@ -103,5 +101,8 @@
         crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="/js/admin.js"></script>
+<script>
+    $(document).ready(appendRoles());
+</script>
 </body>
 </html>

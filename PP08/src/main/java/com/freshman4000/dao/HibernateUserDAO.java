@@ -66,4 +66,13 @@ public class HibernateUserDAO implements UserDAO {
         List<Role> result = query.getResultList();
         return new HashSet<>(result);
     }
+    @Override
+    public void addRole(String name) {
+        Role role = new Role(name);
+        entityManager.persist(role);
+    }
+    @Override
+    public Role getRoleByName(String name) {
+        return entityManager.find(Role.class, name);
+    }
 }

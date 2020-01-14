@@ -20,4 +20,6 @@ public interface UserDAO {
 
     User getUserByUserName(String username);
     Set<Role> getRoles();
+    void addRole(String name);
+    Role getRoleByName(String name);
 }
