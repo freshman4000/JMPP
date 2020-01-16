@@ -3,12 +3,14 @@ package com.freshman4000.controllers;
 import com.freshman4000.model.Role;
 import com.freshman4000.model.User;
 import com.freshman4000.service.ClientService;
+import com.freshman4000.utility.AuthGetter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
@@ -17,7 +19,7 @@ import java.util.*;
 @RequestMapping("/")
 public class UserController {
     @Autowired
-    private ClientService clientService;
+    private RestTemplate restTemplate;
 
     @GetMapping({"/","/info"})
     public String rootPage() {
@@ -37,7 +39,7 @@ public class UserController {
     public String printWelcome(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentPrincipalName = authentication.getName();
-        User user = clientService.getUserByUserName(currentPrincipalName);
+        User user = restTemplate.postForObject("http://localhost:8090/api/getAuth/" + currentPrincipalName, AuthGetter.getEntity("jsonObject"), User.class);
         List<Role> list = new ArrayList<>(user.getRoles());
         model.addAttribute("list", list);
         model.addAttribute("user", user);

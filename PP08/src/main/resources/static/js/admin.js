@@ -161,7 +161,7 @@ function updateUser(id) {
             $("#closemodal".concat(id)).click();
         },
         error: function (e) {
-            alert("error");
+          alert("duplicate email");
         }
     });
 }
